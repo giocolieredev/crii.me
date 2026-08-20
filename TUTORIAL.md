@@ -1,11 +1,10 @@
 # crii.me — how to publish & maintain your sites
 
-This folder contains **both** websites:
-
-| Site         | Where it lives        | URL              | Repo (on giocolieredev)  |
+This folder contains **both** websites:| Site         | Where it lives        | URL              | Repo (on giocolieredev)  |
 | ------------ | --------------------- | ---------------- | ------------------------ |
-| Main website | root of this folder   | https://crii.me  | `crii.me` (create it)    |
-| Blog         | `the-blog/` folder    | https://blog.crii.me | `the-blog` (create it) |
+| Main website | root of this folder   | https://crii.me  | `crii.me`                |
+| Blog         | `the-blog/` folder    | https://blog.crii.me | `the-blog`            |
+| CDN          | `cdn/` folder         | https://cdn.crii.me  | `cdn`                 |
 
 The blog page on the main site (`crii.me/blog/`) is a redirect to
 `blog.crii.me`. Both sites are hosted **for free on GitHub Pages** — you only
@@ -243,7 +242,36 @@ Then enable Pages in Settings (branch `main`, `/ (root)`).
 
 ---
 
-## 8. Troubleshooting
+## 8. The CDN (cdn.crii.me)
+
+The CDN repo (`cdn/` folder) hosts images, CSS, JS, and fonts that can be
+referenced from the blog or main site.
+
+**Upload a file:**
+
+```bash
+cp my-photo.png cdn/images/
+cd cdn && git add -A && git commit -m "Add photo" && git push
+```
+
+**Reference it anywhere:**
+
+```html
+<img src="https://cdn.crii.me/images/my-photo.png" alt="Photo" loading="lazy">
+<link rel="stylesheet" href="https://cdn.crii.me/css/style.css">
+```
+
+**DNS (once, in Namecheap):**
+
+```
+Type:  CNAME
+Name:  cdn
+Value: giocolieredev.github.io
+```
+
+---
+
+## 9. Troubleshooting
 
 | Problem                                  | Fix |
 | ---------------------------------------- | --- |
