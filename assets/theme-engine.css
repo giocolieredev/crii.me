@@ -1,6 +1,20 @@
     /* ═══════════════════════════════════════════════
        THEME ENGINE — styles, brutalist modes, grids
     ═══════════════════════════════════════════════ */
+    /* Readable text selection everywhere (light & dark sections),
+       overriding browser/system defaults that make selected text
+       unreadable on dark surfaces. */
+    ::selection {
+      background: var(--selection-bg, #FFE3C2);
+      color: #0A0A0A !important;
+      text-shadow: none !important;
+    }
+    ::-moz-selection {
+      background: var(--selection-bg, #FFE3C2);
+      color: #0A0A0A !important;
+      text-shadow: none !important;
+    }
+
     :root {
       --theme-accent: var(--orange);
       --theme-accent-d: var(--orange-d);
