@@ -29,6 +29,7 @@ crii.me - Blog Test/
 | status.crii.me | giocolieredev/status | System status |
 | link.crii.me | giocolieredev/link | URL shortener |
 | bio.crii.me | giocolieredev/bio | Link-in-bio |
+| help.crii.me | giocolieredev/help | Knowledge base + support |
 
 ## 📚 Documentation Files
 
@@ -39,6 +40,7 @@ crii.me - Blog Test/
 | [STATUS.md](STATUS.md) | Status page updates and incidents |
 | [LINK.md](LINK.md) | URL shortener management |
 | [BIO.md](BIO.md) | Link-in-bio page updates |
+| [HELP.md](HELP.md) | Knowledge base & support articles |
 
 ## 🔧 DNS Records (Namecheap)
 
@@ -56,6 +58,7 @@ Records needed:
 - `status` → giocolieredev.github.io
 - `link` → giocolieredev.github.io
 - `bio` → giocolieredev.github.io
+- `help` → giocolieredev.github.io
 
 The apex `crii.me` already has A records pointing to GitHub Pages IPs.
 

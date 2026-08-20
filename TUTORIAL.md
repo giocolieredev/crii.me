@@ -8,6 +8,7 @@ This folder contains **both** websites:| Site         | Where it lives        | 
 | Status       | `status/` folder      | https://status.crii.me | `status`            |
 | Links        | `link/` folder        | https://link.crii.me   | `link`              |
 | Bio          | `bio/` folder         | https://bio.crii.me    | `bio`               |
+| Help         | `help/` folder        | https://help.crii.me   | `help`              |
 
 The blog page on the main site (`crii.me/blog/`) is a redirect to
 `blog.crii.me`. Both sites are hosted **for free on GitHub Pages** — you only
