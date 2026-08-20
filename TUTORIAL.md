@@ -5,6 +5,7 @@ This folder contains **both** websites:| Site         | Where it lives        | 
 | Main website | root of this folder   | https://crii.me  | `crii.me`                |
 | Blog         | `the-blog/` folder    | https://blog.crii.me | `the-blog`            |
 | CDN          | `cdn/` folder         | https://cdn.crii.me  | `cdn`                 |
+| Status       | `status/` folder      | https://status.crii.me | `status`            |
 
 The blog page on the main site (`crii.me/blog/`) is a redirect to
 `blog.crii.me`. Both sites are hosted **for free on GitHub Pages** — you only
@@ -271,7 +272,36 @@ Value: giocolieredev.github.io
 
 ---
 
-## 9. Troubleshooting
+## 9. The Status Page (status.crii.me)
+
+The status page (`status/` folder) shows live system status for all services.
+It loads `status.json` from GitHub — edit that file to update the page.
+
+**Update a service status:**
+
+```bash
+# Edit status.json — change a service's status
+cd status
+vim status.json  # change "status": "operational" to "degraded"
+git add status.json && git commit -m "Update: website degraded" && git push
+```
+
+**Report an incident:**
+
+Add an entry to the `incidents` array in `status.json`. See the README for
+the full format.
+
+**DNS (once, in Namecheap):**
+
+```
+Type:  CNAME
+Name:  status
+Value: giocolieredev.github.io
+```
+
+---
+
+## 10. Troubleshooting
 
 | Problem                                  | Fix |
 | ---------------------------------------- | --- |

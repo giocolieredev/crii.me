@@ -1,5 +1,6 @@
 the-blog/
 cdn/
+status/
 _site/
 .jekyll-cache/
 .jekyll-metadata
