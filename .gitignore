@@ -1,6 +1,8 @@
 the-blog/
 cdn/
 status/
+link/
+bio/
 _site/
 .jekyll-cache/
 .jekyll-metadata

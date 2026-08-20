@@ -6,6 +6,8 @@ This folder contains **both** websites:| Site         | Where it lives        | 
 | Blog         | `the-blog/` folder    | https://blog.crii.me | `the-blog`            |
 | CDN          | `cdn/` folder         | https://cdn.crii.me  | `cdn`                 |
 | Status       | `status/` folder      | https://status.crii.me | `status`            |
+| Links        | `link/` folder        | https://link.crii.me   | `link`              |
+| Bio          | `bio/` folder         | https://bio.crii.me    | `bio`               |
 
 The blog page on the main site (`crii.me/blog/`) is a redirect to
 `blog.crii.me`. Both sites are hosted **for free on GitHub Pages** — you only
@@ -301,7 +303,56 @@ Value: giocolieredev.github.io
 
 ---
 
-## 10. Troubleshooting
+## 10. URL Shortener (link.crii.me)
+
+The link shortener (`link/` folder) provides short URLs at `link.crii.me/#<code>`.
+
+**Add a short link:**
+
+Edit `link/urls.json`:
+
+```json
+{
+  "code": "mysite",
+  "url": "https://example.com",
+  "title": "My Site",
+  "created": "2026-08-21",
+  "clicks": 0
+}
+```
+
+Then push:
+
+```bash
+cd link
+git add urls.json && git commit -m "Add link: mysite" && git push
+```
+
+**Use the short link:**
+
+```
+https://link.crii.me/#mysite
+```
+
+---
+
+## 11. Link-in-Bio (bio.crii.me)
+
+The bio page (`bio/` folder) is a link-in-bio page with social links.
+
+**Update the page:**
+
+Edit `bio/index.html` to change links, bio text, or social accounts.
+
+```bash
+cd bio
+vim index.html
+git add index.html && git commit -m "Update bio" && git push
+```
+
+---
+
+## 12. Troubleshooting
 
 | Problem                                  | Fix |
 | ---------------------------------------- | --- |
