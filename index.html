@@ -42,11 +42,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <!-- ═══ Icons ═══ -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- ═══ Theme Engine ═══ -->
+  <link rel="stylesheet" href="assets/theme-engine.css" />
 
   <style>
     /* ══════════════════════════════════════════
@@ -1829,7 +1831,7 @@
       <div class="hero-identity">
         <div class="avatar-wrap">
           <div class="avatar" title="Profile picture">
-            <img src="assets/pfp.png" alt="Cri's profile picture">
+            <img src="assets/pfp.png" alt="Cri's profile picture" data-theme-avatar>
           </div>
         </div>
         <div>
@@ -2762,6 +2764,11 @@
       handleHashRoute();
     });
   </script>
+
+  <!-- ═══════════════════════════════════════════
+     THEME ENGINE
+  ═══════════════════════════════════════════ -->
+  <script src="assets/theme-engine.js"></script>
 
 </body>
 
