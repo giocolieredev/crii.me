@@ -1,0 +1,11 @@
+the-blog/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+_config.yml
+_layouts/
+_includes/
+_posts/
+Gemfile
+Gemfile.lock
+vendor/

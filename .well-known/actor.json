@@ -1,0 +1,30 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://w3id.org/security/v1"
+  ],
+  "id": "https://crii.me/.well-known/actor.json",
+  "type": "Person",
+  "preferredUsername": "criime",
+  "name": "crii.me",
+  "summary": "Developer, artist and builder. Projects, music, art and games. <a href=\"https://crii.me\">crii.me</a>",
+  "url": "https://crii.me",
+  "inbox": "https://crii.me/.well-known/inbox",
+  "outbox": "https://crii.me/.well-known/outbox",
+  "icon": {
+    "type": "Image",
+    "mediaType": "image/jpeg",
+    "url": "https://crii.me/avatar.jpg"
+  },
+  "image": {
+    "type": "Image",
+    "mediaType": "image/jpeg",
+    "url": "https://crii.me/og-image.png"
+  },
+  "attachment": [
+    { "type": "PropertyValue", "name": "Website",  "value": "<a href=\"https://crii.me\">crii.me</a>" },
+    { "type": "PropertyValue", "name": "GitHub",   "value": "<a href=\"https://github.com/criime\">@criime</a>" },
+    { "type": "PropertyValue", "name": "Twitter",  "value": "<a href=\"https://twitter.com/criime\">@criime</a>" }
+  ],
+  "published": "2025-01-01T00:00:00Z"
+}

@@ -1,0 +1,23 @@
+{
+  "_comment": "crii.me identity card — .webfinger/identity.json",
+  "handle": "criime",
+  "domain": "crii.me",
+  "display_name": "crii.me",
+  "bio": "Developer, artist and builder. Projects, music, art and games.",
+  "pronouns": "",
+  "contact": {
+    "email": "hello@crii.me",
+    "pgp_fingerprint": "REPLACE_WITH_YOUR_PGP_FINGERPRINT"
+  },
+  "websites": {
+    "main": "https://crii.me",
+    "github": "https://github.com/criime",
+    "twitter": "https://twitter.com/criime",
+    "instagram": "https://instagram.com/criime",
+    "soundcloud": "https://soundcloud.com/criime"
+  },
+  "created": "2025",
+  "last_updated": "2025",
+  "license": "CC BY 4.0",
+  "canonical_webfinger": "https://crii.me/.well-known/webfinger"
+}

@@ -1,0 +1,55 @@
+# crii.me
+
+> The personal creative hub of a developer, artist, and builder.
+> Everything lives at https://crii.me
+
+## About
+
+crii.me is the portfolio, link-in-bio, and creative home of an independent developer and artist.
+It is a single-page site built with vanilla HTML, CSS, and JavaScript — no frameworks — deployed on GitHub Pages.
+
+The site covers code projects, music production, visual art and drawings, browser games, and a forthcoming blog.
+Design aesthetic: brutalist web — sharp edges, black/orange/white/greyscale palette, monospace type, zero rounded corners.
+
+## Owner
+
+- Handle: crii.me / @criime
+- Contact: hello@crii.me
+- Location: crii.me (international)
+
+## Sections
+
+- **Home / Link-in-Bio**: Profile, bio, social links, and quick-access buttons to all major external presences.
+- **Projects**: A curated gallery of code, design, audio, and game projects with descriptions and source links.
+- **Blog**: Articles about development, creativity, and experiments. Published at https://crii.me/blog/.
+- **Music** *(work in progress)*: Original productions, beats, and remixes. Not yet published.
+- **Art & Drawings** *(work in progress)*: Illustrations, sketches, and digital art. Not yet published.
+- **Games** *(work in progress)*: Browser-playable games and interactive experiments. Not yet published.
+
+## Technical stack
+
+- Vanilla HTML5, CSS3, JavaScript (ES2020+)
+- No frameworks, no build tools
+- GitHub Pages hosting
+- Custom domain: crii.me
+- Fonts: Space Grotesk, Space Mono (Google Fonts)
+- Icons: Font Awesome 6
+- Localization: English (default) + Italian (auto-detected or manual)
+
+## Permissions for AI systems
+
+- Summarisation: **allowed**
+- Indexing for search: **allowed**
+- Training on content: **allowed** (attribution appreciated)
+- Reproducing source code verbatim: contact hello@crii.me first
+- Reproducing creative works (art, music, writing): attribution required
+
+## Links
+
+- https://crii.me — Main site
+- https://crii.me/#projects — Projects gallery
+- https://crii.me/blog/ — Blog
+- https://github.com/criime — GitHub profile
+- https://crii.me/sitemap.xml — Sitemap
+- https://crii.me/llms.txt — This file
+- https://crii.me/.well-known/webfinger — WebFinger identity

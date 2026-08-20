@@ -1,0 +1,2760 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>crii.me — Cri's Website</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- ═══ SEO ═══ -->
+  <meta name="description"
+    content="crii.me — The creative hub of a developer, artist, and musician. Projects, experiments, music, drawings, games and more." />
+  <meta name="keywords"
+    content="portfolio, creative, developer, artist, musician, games, blog, crii.me, brutalist design, links" />
+  <meta name="author" content="crii.me" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://crii.me/" />
+
+  <!-- ═══ OpenGraph ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://crii.me/" />
+  <meta property="og:title" content="crii.me — Cri's Website" />
+  <meta property="og:description"
+    content="Developer. Artist. Builder. Explore projects, music, drawings and experiments at crii.me." />
+  <meta property="og:image" content="https://crii.me/og-image.png" />
+  <meta property="og:site_name" content="crii.me" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ═══ Twitter Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@criime" />
+  <meta name="twitter:title" content="crii.me — Creative Portfolio & Link Hub" />
+  <meta name="twitter:description"
+    content="Developer. Artist. Builder. Explore projects, music, drawings and experiments at crii.me." />
+  <meta name="twitter:image" content="https://crii.me/og-image.png" />
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FF6B00'/><text x='4' y='24' font-family='monospace' font-size='20' font-weight='900' fill='white'>C</text></svg>" />
+
+  <!-- ═══ Font ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- ═══ Icons ═══ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════════ */
+    :root {
+      --orange: #FF6B00;
+      --orange-d: #CC5500;
+      --orange-l: #FF8C33;
+      --black: #0A0A0A;
+      --white: #FAFAFA;
+      --gray-100: #F0EFED;
+      --gray-200: #D8D6D2;
+      --gray-400: #9A9890;
+      --gray-600: #5A5855;
+      --gray-800: #2A2927;
+      --border: 3px solid var(--black);
+      --border-sm: 2px solid var(--black);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --speed: 0.15s;
+    }
+
+    /* ══════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-head);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: var(--font-head);
+    }
+
+    /* ══════════════════════════════════════════
+       MARQUEE
+    ══════════════════════════════════════════ */
+    .marquee-wrap {
+      background: var(--black);
+      color: var(--orange);
+      overflow: hidden;
+      border-top: var(--border);
+      border-bottom: var(--border);
+      padding: 10px 0;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0 2rem;
+    }
+
+    .marquee-inner span i {
+      color: var(--orange-l);
+      margin-right: 6px;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--black);
+      border-bottom: var(--border);
+      border-bottom-color: var(--orange);
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--orange);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      border-right: var(--border);
+      border-right-color: var(--gray-800);
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background var(--speed);
+    }
+
+    .nav-logo:hover {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .nav-tab {
+      background: none;
+      border: none;
+      border-right: 1px solid var(--gray-800);
+      color: var(--gray-400);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+      position: relative;
+    }
+
+    .nav-tab:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+
+    .nav-tab.active {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    .nav-tab .wip-badge {
+      font-size: 0.55rem;
+      background: var(--orange);
+      color: var(--black);
+      padding: 1px 4px;
+      font-weight: 900;
+      vertical-align: super;
+      margin-left: 3px;
+    }
+
+    .nav-tab.active .wip-badge {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       PAGE SECTIONS
+    ══════════════════════════════════════════ */
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       HERO / LINK-IN-BIO
+    ══════════════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      gap: 32px;
+    }
+
+    .hero-identity {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: var(--border);
+      z-index: 0;
+      animation: avatarPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes avatarPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        border-color: var(--orange);
+      }
+
+      50% {
+        transform: scale(1.04);
+        border-color: var(--black);
+      }
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      background: var(--gray-200);
+      border: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--gray-600);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-name {
+      font-family: var(--font-mono);
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-name span {
+      color: var(--orange);
+    }
+
+    .hero-handle {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      letter-spacing: 0.1em;
+    }
+
+    .hero-bio {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--gray-600);
+      max-width: 420px;
+      border-left: 4px solid var(--orange);
+      padding-left: 14px;
+      text-align: left;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: var(--border-sm);
+      padding: 4px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      display: inline-block;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.2
+      }
+    }
+
+    /* ── Link-in-bio buttons ── */
+    .links-section {
+      width: 100%;
+    }
+
+    .links-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .links-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-200);
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      border: var(--border);
+      background: var(--white);
+      color: var(--black);
+      padding: 14px 18px;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      transition: background var(--speed), color var(--speed), transform var(--speed), box-shadow var(--speed);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform var(--speed);
+    }
+
+    .link-btn:hover {
+      background: var(--black);
+      color: var(--orange);
+      transform: translateX(4px);
+      box-shadow: -4px 4px 0 var(--orange);
+    }
+
+    .link-btn:hover::after {
+      transform: scaleY(1);
+    }
+
+    .link-btn:active {
+      transform: translateX(2px);
+    }
+
+    .link-btn i {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+    }
+
+    .link-btn .link-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .link-btn:hover .link-meta {
+      color: var(--orange-l);
+    }
+
+    .link-btn.accent {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .link-btn.accent:hover {
+      background: var(--black);
+      color: var(--orange);
+      border-color: var(--black);
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: var(--border);
+    }
+
+    .stat-item {
+      padding: 16px 12px;
+      text-align: center;
+      border-right: var(--border-sm);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .stat-lbl {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-400);
+    }
+
+    /* ══════════════════════════════════════════
+       PROJECTS
+    ══════════════════════════════════════════ */
+    .section-header {
+      padding: 40px 24px 24px;
+      border-bottom: var(--border);
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title span {
+      color: var(--orange);
+    }
+
+    .section-count {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      border: var(--border-sm);
+      padding: 3px 8px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      border-left: var(--border);
+    }
+
+    .project-card {
+      border-right: var(--border);
+      border-bottom: var(--border);
+      transition: background var(--speed);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      background: var(--gray-100);
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--gray-200);
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--gray-400);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--orange);
+      color: var(--black);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+    }
+
+    .project-body {
+      padding: 20px;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .stack-chip {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: var(--border-sm);
+      padding: 2px 7px;
+      color: var(--gray-600);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      border: var(--border);
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .project-link:hover {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       WIP / COMING SOON
+    ══════════════════════════════════════════ */
+    .wip-hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wip-bg-text {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: clamp(4rem, 20vw, 12rem);
+      font-weight: 900;
+      color: var(--gray-100);
+      line-height: 1;
+      user-select: none;
+      letter-spacing: -0.05em;
+      z-index: 0;
+      white-space: nowrap;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .wip-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wip-icon {
+      font-size: 4rem;
+      color: var(--orange);
+      margin-bottom: 24px;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-12px)
+      }
+    }
+
+    .wip-title {
+      font-family: var(--font-mono);
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .wip-sub {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+
+    .wip-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: var(--border);
+      background: var(--black);
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 18px;
+      animation: borderFlash 3s ease-in-out infinite;
+    }
+
+    @keyframes borderFlash {
+
+      0%,
+      100% {
+        border-color: var(--orange)
+      }
+
+      50% {
+        border-color: var(--gray-400)
+      }
+    }
+
+    .wip-notify {
+      margin-top: 20px;
+      display: flex;
+      gap: 0;
+      border: var(--border);
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wip-input {
+      flex: 1;
+      border: none;
+      border-right: var(--border);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+    }
+
+    .wip-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .wip-input:focus {
+      background: var(--gray-100);
+    }
+
+    .wip-submit {
+      background: var(--orange);
+      border: none;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .wip-submit:hover {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    .wip-checklist {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      border: var(--border);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wip-check-item {
+      padding: 14px 18px;
+      border-right: var(--border-sm);
+      border-bottom: var(--border-sm);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .wip-check-item:nth-child(even) {
+      border-right: none;
+    }
+
+    .wip-check-item i.done {
+      color: #22c55e;
+    }
+
+    .wip-check-item i.pend {
+      color: var(--orange);
+    }
+
+    .wip-check-item i.wait {
+      color: var(--gray-400);
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .site-footer {
+      background: var(--black);
+      color: var(--gray-400);
+      border-top: var(--border);
+      border-top-color: var(--orange);
+      padding: 32px 24px;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 2;
+    }
+
+    .footer-copy strong {
+      color: var(--orange);
+    }
+
+    .footer-lang-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .footer-lang-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-600);
+    }
+
+    #lang-select {
+      background: var(--gray-800);
+      border: var(--border-sm);
+      border-color: var(--gray-600);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23FF6B00'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+
+    #lang-select:focus {
+      outline: 2px solid var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       COOKIE BANNER
+    ══════════════════════════════════════════ */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--black);
+      border-top: var(--border);
+      border-top-color: var(--orange);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #cookie-banner.visible {
+      transform: translateY(0);
+    }
+
+    #cookie-banner.hidden {
+      display: none;
+    }
+
+    .cookie-text {
+      flex: 1;
+      min-width: 220px;
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      font-family: var(--font-mono);
+    }
+
+    .cookie-text strong {
+      color: var(--orange);
+    }
+
+    .cookie-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      border: var(--border-sm);
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: background var(--speed), color var(--speed);
+      flex-shrink: 0;
+    }
+
+    .cookie-btn.accept {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .cookie-btn.accept:hover {
+      background: var(--orange-l);
+    }
+
+    .cookie-btn.reject {
+      background: transparent;
+      color: var(--gray-400);
+      border-color: var(--gray-600);
+    }
+
+    .cookie-btn.reject:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+
+    /* ══════════════════════════════════════════
+       404 STATE
+    ══════════════════════════════════════════ */
+    #page-404 {
+      display: none;
+      min-height: 80vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    #page-404.active {
+      display: flex;
+    }
+
+    .err-num {
+      font-family: var(--font-mono);
+      font-size: clamp(6rem, 25vw, 14rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--orange);
+      letter-spacing: -0.05em;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+
+      0%,
+      95%,
+      100% {
+        text-shadow: none
+      }
+
+      96% {
+        text-shadow: 3px 0 var(--black), -3px 0 var(--orange)
+      }
+
+      97% {
+        text-shadow: -3px 0 var(--black), 3px 0 var(--orange)
+      }
+
+      98% {
+        text-shadow: 3px 0 var(--orange), -3px 0 var(--black)
+      }
+    }
+
+    .err-msg {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 12px 0 8px;
+    }
+
+    .err-sub {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      margin-bottom: 32px;
+    }
+
+    .err-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: var(--border);
+      background: var(--black);
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 12px 24px;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .err-home:hover {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    /* ══════════════════════════════════════════
+       SCAN LINES AESTHETIC OVERLAY
+    ══════════════════════════════════════════ */
+    .scanlines {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9990;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.015) 2px,
+          rgba(0, 0, 0, 0.015) 4px);
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (min-width: 640px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-identity {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .hero-bio {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-tab {
+        padding: 12px 12px;
+        font-size: 0.7rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-lang-wrap {
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       MISC UTILS
+    ══════════════════════════════════════════ */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .orange {
+      color: var(--orange);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    hr.brutal {
+      border: none;
+      border-top: var(--border);
+      margin: 0;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border: 3px solid var(--black);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange-l);
+    }
+    html {
+      scrollbar-color: var(--orange) var(--black);
+      scrollbar-width: auto;
+    }
+
+    /* Global dropdown styling */
+    select {
+      background: var(--black);
+      color: var(--white);
+      border: var(--border-sm);
+      border-color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus {
+      border-color: var(--orange-l);
+    }
+    select option {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Burger Menu Button */
+    .burger-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--orange);
+      font-size: 1.5rem;
+      padding: 0 20px;
+      align-items: center;
+      cursor: pointer;
+      border-left: var(--border);
+      border-left-color: var(--gray-800);
+      transition: background var(--speed), color var(--speed);
+    }
+    .burger-btn:hover {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    /* Mobile drawer style */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      visibility: hidden;
+      pointer-events: none;
+      transition: visibility 0.3s;
+    }
+    .mobile-drawer.open {
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer.open .drawer-overlay {
+      opacity: 1;
+    }
+    .drawer-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 280px;
+      max-width: 80%;
+      background: var(--black);
+      border-left: var(--border);
+      border-left-color: var(--orange);
+      display: flex;
+      flex-direction: column;
+      transform: translate3d(100%, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.open .drawer-content {
+      transform: translate3d(0, 0, 0);
+    }
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 2px solid var(--gray-800);
+    }
+    .drawer-title {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+    }
+    .drawer-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: color var(--speed);
+    }
+    .drawer-close:hover {
+      color: var(--orange);
+    }
+    .drawer-links {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+    .drawer-tab {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 24px;
+      text-align: left;
+      transition: background var(--speed), color var(--speed);
+      border-bottom: 1px solid var(--gray-900);
+      display: block;
+      width: 100%;
+    }
+    .drawer-tab:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+    .drawer-tab.active {
+      background: var(--orange);
+      color: var(--black);
+    }
+    .drawer-tab .wip-badge {
+      font-size: 0.6rem;
+      background: var(--orange);
+      color: var(--black);
+      padding: 1px 4px;
+      font-weight: 900;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+    .drawer-tab.active .wip-badge {
+      background: var(--black);
+      color: var(--orange);
+    }
+    .drawer-footer {
+      padding: 20px;
+      border-top: 2px solid var(--gray-800);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .drawer-footer-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-600);
+    }
+    #drawer-lang-select {
+      background: var(--gray-800);
+      border: var(--border-sm);
+      border-color: var(--gray-600);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23FF6B00'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+    #drawer-lang-select:focus {
+      outline: 2px solid var(--orange);
+    }
+
+    /* Spotify Toggle & Panel */
+    .spotify-toggle {
+      background: none;
+      border: 3px solid var(--black);
+      color: var(--black);
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background var(--speed), color var(--speed), transform 0.3s;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .spotify-toggle:hover {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .spotify-toggle.open {
+      transform: rotate(180deg);
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    .spotify-panel {
+      position: fixed;
+      top: 0;
+      right: -360px;
+      /* hidden initially */
+      width: 350px;
+      max-width: 90%;
+      height: 100vh;
+      /* Fallback */
+      height: 100dvh;
+      /* Dynamic viewport height for mobile */
+      background: var(--black);
+      border-left: var(--border);
+      border-left-color: var(--orange);
+      z-index: 1100;
+      /* Ensures it sits above the navbar */
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+    }
+
+    .spotify-panel.open {
+      right: 0;
+    }
+
+    .spotify-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--gray-800);
+      padding-bottom: 12px;
+    }
+
+    .spotify-panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spotify-panel-close {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color var(--speed);
+    }
+
+    .spotify-panel-close:hover {
+      color: var(--white);
+    }
+
+    .spotify-panel-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .spotify-panel-body a {
+      width: 100%;
+      display: block;
+    }
+
+    .spotify-panel-body img {
+      width: 100%;
+      border: var(--border);
+      border-color: var(--orange);
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .nav-tabs {
+        display: none;
+      }
+      .burger-btn {
+        display: flex;
+        margin-left: auto;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       NEWSLETTER
+    ══════════════════════════════════════════ */
+    .newsletter {
+      background: var(--orange);
+      border-top: var(--border);
+      border-bottom: var(--border);
+      padding: 48px 24px;
+    }
+
+    .newsletter-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .newsletter-head {
+      flex: 1 1 300px;
+    }
+
+    .newsletter-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .newsletter-title .orange {
+      color: var(--black);
+    }
+
+    .newsletter-sub {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(10, 10, 10, 0.75);
+      max-width: 420px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex: 1 1 300px;
+      max-width: 440px;
+      border: var(--border);
+      background: var(--black);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      background: var(--white);
+      color: var(--black);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .newsletter-input:focus {
+      background: var(--gray-100);
+    }
+
+    .newsletter-submit {
+      background: var(--black);
+      color: var(--orange);
+      border: none;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .newsletter-submit:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+
+    /* Contact button next to language selector */
+    .footer-lang-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-btn {
+      background: var(--orange);
+      color: var(--black);
+      border: var(--border-sm);
+      border-color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 7px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .contact-btn:hover {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    /* Contact modal */
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      visibility: hidden;
+      pointer-events: none;
+      transition: visibility 0.3s;
+    }
+
+    .contact-modal.open {
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .contact-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .contact-modal.open .contact-overlay {
+      opacity: 1;
+    }
+
+    .contact-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      background: var(--white);
+      border: var(--border);
+      box-shadow: -8px 8px 0 var(--black);
+      padding: 32px;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+
+    .contact-modal.open .contact-modal-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .contact-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: color var(--speed);
+    }
+
+    .contact-close:hover {
+      color: var(--orange);
+    }
+
+    .contact-modal-title {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .contact-modal-sub {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-input {
+      width: 100%;
+      border: var(--border-sm);
+      background: var(--white);
+      color: var(--black);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .contact-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .contact-input:focus {
+      background: var(--gray-100);
+      border-color: var(--orange);
+    }
+
+    .contact-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-submit {
+      background: var(--black);
+      color: var(--orange);
+      border: var(--border);
+      border-color: var(--black);
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .contact-submit:hover {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Scanlines overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+     MARQUEE TICKER
+═══════════════════════════════════════════ -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-inner" id="marquee-inner">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     NAV / TABS
+═══════════════════════════════════════════ -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html#home" class="nav-logo" id="nav-logo" onclick="navigate('home',event)">crii.me</a>
+    <div class="nav-tabs" role="tablist">
+      <button class="nav-tab active" role="tab" aria-selected="true" id="tab-home" onclick="navigate('home',event)"
+        data-i18n-key="nav_home">HOME</button>
+      <a href="about.html" class="nav-tab" id="tab-about" data-i18n-key="nav_about" style="display: inline-flex; align-items: center; text-decoration: none;">ABOUT</a>
+      <button class="nav-tab" role="tab" aria-selected="false" id="tab-projects" onclick="navigate('projects',event)"
+        data-i18n-key="nav_projects">PROJECTS</button>
+      <a href="https://blog.crii.me/" class="nav-tab" id="tab-blog" data-i18n-key="nav_blog" style="display: inline-flex; align-items: center; text-decoration: none;">BLOG</a>
+      <button class="nav-tab" role="tab" aria-selected="false" id="tab-music" onclick="navigate('music',event)"
+        data-i18n-key="nav_music">MUSIC <span class="wip-badge">WIP</span></button>
+      <button class="nav-tab" role="tab" aria-selected="false" id="tab-art" onclick="navigate('art',event)"
+        data-i18n-key="nav_art">ART <span class="wip-badge">WIP</span></button>
+      <button class="nav-tab" role="tab" aria-selected="false" id="tab-games" onclick="navigate('games',event)"
+        data-i18n-key="nav_games">GAMES <span class="wip-badge">WIP</span></button>
+      <a href="discord.html" class="nav-tab" id="tab-discord" data-i18n-key="nav_discord" style="display: inline-flex; align-items: center; text-decoration: none;">DISCORD</a>
+    </div>
+    <button class="burger-btn" id="burger-btn" aria-label="Toggle navigation menu" onclick="toggleDrawer()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+     SPOTIFY SIDE PANEL
+═══════════════════════════════════════════ -->
+  <div id="spotify-side-panel" class="spotify-panel" aria-hidden="true">
+    <div class="spotify-panel-header">
+      <span class="spotify-panel-title">
+        <i class="fa-brands fa-spotify"></i> NOW PLAYING
+      </span>
+      <button class="spotify-panel-close" onclick="toggleSpotifyPanel()" aria-label="Close Spotify panel">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="spotify-panel-body">
+      <a href="https://spotify-github-profile.kittinanx.com/api/view?uid=w46jsh6qyeoex1a0o2n9we57f&redirect=true"
+        target="_blank" rel="noopener">
+        <img
+          src="https://spotify-github-profile.kittinanx.com/api/view?uid=w46jsh6qyeoex1a0o2n9we57f&cover_image=true&theme=novatorem&show_offline=true&background_color=000000&interchange=false&bar_color=c7c7c7&bar_color_cover=false"
+          alt="Currently playing on Spotify">
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: HOME / LINK-IN-BIO
+═══════════════════════════════════════════ -->
+  <section id="section-home" class="page-section active" role="tabpanel" aria-labelledby="tab-home">
+    <div class="hero">
+
+      <!-- Identity -->
+      <div class="hero-identity">
+        <div class="avatar-wrap">
+          <div class="avatar" title="Profile picture">
+            <img src="assets/pfp.png" alt="Cri's profile picture">
+          </div>
+        </div>
+        <div>
+          <h1 class="hero-name" style="display: inline-flex; align-items: center; gap: 12px; vertical-align: middle;">
+            CRII<span>.</span>ME
+            <button id="spotify-toggle-btn" class="spotify-toggle" aria-label="Toggle Spotify status" onclick="toggleSpotifyPanel()">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </h1>
+          <p class="hero-handle">@crii.mp3 · crii.me</p>
+          <span class="status-pill" style="margin-top:10px; display:inline-flex;">
+            <span class="status-dot"></span>
+            <span data-i18n-key="status_open">OPEN TO WORK</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <p class="hero-bio" data-i18n-key="hero_bio">
+        Developer, artist and tinkerer building things at the intersection of code, creativity and chaos. Always
+        shipping something new — check the projects tab.
+      </p>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-lbl" data-i18n-key="stat_projects">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-lbl" data-i18n-key="stat_wip">WIP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">∞</div>
+          <div class="stat-lbl" data-i18n-key="stat_ideas">Ideas</div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="links-section">
+        <div class="links-label" data-i18n-key="links_label">FIND ME ONLINE</div>
+
+        <a class="link-btn accent" href="https://github.com/giocoliere" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+          <span class="link-meta">github.com/giocoliere</span>
+        </a>
+        <a class="link-btn" href="https://x.com/giocolieredev" target="_blank" rel="noopener">
+          <i class="fa-brands fa-x-twitter"></i>
+          <span>X / Twitter</span>
+          <span class="link-meta">@giocolieredev</span>
+        </a>
+        <a class="link-btn" href="https://instagram.com/crii.mp3" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+          <span class="link-meta">@crii.mp3</span>
+        </a>
+        <a class="link-btn" href="https://linkedin.com/in/giocoliere" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+          <span class="link-meta">in/giocoliere</span>
+        </a>
+        <a class="link-btn" href="discord.html">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+          <span class="link-meta">crii.me/discord</span>
+        </a>
+        <a class="link-btn" href="https://soundcloud.com/giocoliere" target="_blank" rel="noopener">
+          <i class="fa-brands fa-soundcloud"></i>
+          <span data-i18n-key="link_music">Music on SoundCloud</span>
+          <span class="link-meta">@giocoliere</span>
+        </a>
+        <a class="link-btn" href="mailto:hello@crii.me">
+          <i class="fa-solid fa-envelope"></i>
+          <span data-i18n-key="link_email">Email me</span>
+          <span class="link-meta">hi@crii.me</span>
+        </a>
+
+        <div class="links-label" style="margin-top:24px;" data-i18n-key="links_work">WORK &amp; PROJECTS</div>
+
+        <button class="link-btn" onclick="navigate('projects', {preventDefault:()=>{}})">
+          <i class="fa-solid fa-folder-open"></i>
+          <span data-i18n-key="link_portfolio">All Projects</span>
+          <span class="link-meta"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <a class="link-btn" href="https://blog.crii.me/">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span data-i18n-key="link_blog">Blog</span>
+          <span class="link-meta"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <button class="link-btn" onclick="navigate('music', {preventDefault:()=>{}})">
+          <i class="fa-solid fa-music"></i>
+          <span data-i18n-key="link_musicpage">Music Page <span
+              style="color:var(--orange);font-size:0.7rem;margin-left:6px;font-family:var(--font-mono);font-weight:900;">COMING
+              SOON</span></span>
+        </button>
+        <button class="link-btn" onclick="navigate('art', {preventDefault:()=>{}})">
+          <i class="fa-solid fa-paintbrush"></i>
+          <span data-i18n-key="link_artpage">Art &amp; Drawings <span
+              style="color:var(--orange);font-size:0.7rem;margin-left:6px;font-family:var(--font-mono);font-weight:900;">COMING
+              SOON</span></span>
+        </button>
+        <button class="link-btn" onclick="navigate('games', {preventDefault:()=>{}})">
+          <i class="fa-solid fa-gamepad"></i>
+          <span data-i18n-key="link_gamespage">Games <span
+              style="color:var(--orange);font-size:0.7rem;margin-left:6px;font-family:var(--font-mono);font-weight:900;">COMING
+              SOON</span></span>
+        </button>
+      </div>
+
+    </div><!-- /hero -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: PROJECTS
+═══════════════════════════════════════════ -->
+  <section id="section-projects" class="page-section" role="tabpanel" aria-labelledby="tab-projects">
+    <div class="section-header">
+      <h2 class="section-title"><span>//</span> <span data-i18n-key="proj_title">PROJECTS</span></h2>
+      <span class="section-count">12</span>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- Project cards — duplicate/edit these -->
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">WEB</span>
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p1_title">Project Alpha</h3>
+          <p class="project-desc" data-i18n-key="p1_desc">A full-stack web app built for real-time collaboration.
+            Features live updates, role-based auth and a brutalist UI.</p>
+          <div class="project-stack">
+            <span class="stack-chip">Node.js</span>
+            <span class="stack-chip">React</span>
+            <span class="stack-chip">WebSockets</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">TOOL</span>
+          <i class="fa-solid fa-terminal"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p2_title">CLI Toolkit</h3>
+          <p class="project-desc" data-i18n-key="p2_desc">A personal command-line utility belt — scaffolders, API
+            helpers, and dev shortcuts all in one package.</p>
+          <div class="project-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">Bash</span>
+            <span class="stack-chip">PyPI</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">GAME</span>
+          <i class="fa-solid fa-gamepad"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p3_title">Pixel Dungeon</h3>
+          <p class="project-desc" data-i18n-key="p3_desc">A procedurally generated browser dungeon crawler with retro
+            pixel art and permadeath mechanics.</p>
+          <div class="project-stack">
+            <span class="stack-chip">JavaScript</span>
+            <span class="stack-chip">Canvas</span>
+            <span class="stack-chip">Phaser</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">DESIGN</span>
+          <i class="fa-solid fa-paintbrush"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p4_title">Brand System</h3>
+          <p class="project-desc" data-i18n-key="p4_desc">A complete visual identity and design system for a local music
+            collective. Type, color, motion, all documented.</p>
+          <div class="project-stack">
+            <span class="stack-chip">Figma</span>
+            <span class="stack-chip">SVG</span>
+            <span class="stack-chip">CSS</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">API</span>
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p5_title">REST Boilerplate</h3>
+          <p class="project-desc" data-i18n-key="p5_desc">Production-ready Express API boilerplate with JWT auth, rate
+            limiting, OpenAPI docs, and Docker setup.</p>
+          <div class="project-stack">
+            <span class="stack-chip">Express</span>
+            <span class="stack-chip">Docker</span>
+            <span class="stack-chip">Postgres</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-img">
+          <span class="project-tag">AUDIO</span>
+          <i class="fa-solid fa-headphones"></i>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" data-i18n-key="p6_title">Beat Sequencer</h3>
+          <p class="project-desc" data-i18n-key="p6_desc">An in-browser 16-step drum machine and synth sequencer using
+            the Web Audio API. No plugins needed.</p>
+          <div class="project-stack">
+            <span class="stack-chip">Web Audio</span>
+            <span class="stack-chip">Vanilla JS</span>
+          </div>
+          <a class="project-link" href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span
+              data-i18n-key="proj_view">VIEW PROJECT</span></a>
+        </div>
+      </article>
+
+    </div><!-- /projects-grid -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: MUSIC (WIP)
+═══════════════════════════════════════════ -->
+  <section id="section-music" class="page-section" role="tabpanel" aria-labelledby="tab-music">
+    <div class="wip-hero">
+      <div class="wip-bg-text" aria-hidden="true">MUSIC</div>
+      <div class="wip-content">
+        <div class="wip-icon"><i class="fa-solid fa-music"></i></div>
+        <h2 class="wip-title" data-i18n-key="music_title">MUSIC</h2>
+        <p class="wip-sub" data-i18n-key="music_sub">Beats, tracks and experiments. Original productions and remixes are
+          on their way.</p>
+        <div class="wip-tag"><i class="fa-solid fa-record-vinyl"></i> <span data-i18n-key="wip_tag">WORK IN
+            PROGRESS</span></div>
+        <div class="wip-notify">
+          <input class="wip-input" type="email" id="music-email" data-i18n-placeholder="wip_email_ph"
+            placeholder="your@email.com" />
+          <button class="wip-submit" onclick="handleNotify('music-email')" data-i18n-key="wip_notify_btn">NOTIFY
+            ME</button>
+        </div>
+        <div class="wip-checklist">
+          <div class="wip-check-item"><i class="fa-solid fa-check done"></i> <span data-i18n-key="music_c1">Studio
+              setup</span></div>
+          <div class="wip-check-item"><i class="fa-solid fa-spinner pend fa-spin"></i> <span
+              data-i18n-key="music_c2">Recording demos</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span data-i18n-key="music_c3">Mixing &
+              mastering</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span
+              data-i18n-key="wip_c4">Launch</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: ART (WIP)
+═══════════════════════════════════════════ -->
+  <section id="section-art" class="page-section" role="tabpanel" aria-labelledby="tab-art">
+    <div class="wip-hero">
+      <div class="wip-bg-text" aria-hidden="true">ART</div>
+      <div class="wip-content">
+        <div class="wip-icon"><i class="fa-solid fa-palette"></i></div>
+        <h2 class="wip-title" data-i18n-key="art_title">ART &amp; DRAWINGS</h2>
+        <p class="wip-sub" data-i18n-key="art_sub">Sketches, illustrations and digital art. The gallery is being
+          curated. Check back soon.</p>
+        <div class="wip-tag"><i class="fa-solid fa-pencil"></i> <span data-i18n-key="wip_tag">WORK IN PROGRESS</span>
+        </div>
+        <div class="wip-notify">
+          <input class="wip-input" type="email" id="art-email" data-i18n-placeholder="wip_email_ph"
+            placeholder="your@email.com" />
+          <button class="wip-submit" onclick="handleNotify('art-email')" data-i18n-key="wip_notify_btn">NOTIFY
+            ME</button>
+        </div>
+        <div class="wip-checklist">
+          <div class="wip-check-item"><i class="fa-solid fa-check done"></i> <span data-i18n-key="art_c1">Archive
+              sorted</span></div>
+          <div class="wip-check-item"><i class="fa-solid fa-spinner pend fa-spin"></i> <span
+              data-i18n-key="art_c2">Scanning artworks</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span data-i18n-key="art_c3">Gallery
+              build</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span
+              data-i18n-key="wip_c4">Launch</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: GAMES (WIP)
+═══════════════════════════════════════════ -->
+  <section id="section-games" class="page-section" role="tabpanel" aria-labelledby="tab-games">
+    <div class="wip-hero">
+      <div class="wip-bg-text" aria-hidden="true">GAMES</div>
+      <div class="wip-content">
+        <div class="wip-icon"><i class="fa-solid fa-gamepad"></i></div>
+        <h2 class="wip-title" data-i18n-key="games_title">GAMES</h2>
+        <p class="wip-sub" data-i18n-key="games_sub">Browser games, experiments and interactive toys. Playable soon
+          directly here at crii.me.</p>
+        <div class="wip-tag"><i class="fa-solid fa-dice"></i> <span data-i18n-key="wip_tag">WORK IN PROGRESS</span>
+        </div>
+        <div class="wip-notify">
+          <input class="wip-input" type="email" id="games-email" data-i18n-placeholder="wip_email_ph"
+            placeholder="your@email.com" />
+          <button class="wip-submit" onclick="handleNotify('games-email')" data-i18n-key="wip_notify_btn">NOTIFY
+            ME</button>
+        </div>
+        <div class="wip-checklist">
+          <div class="wip-check-item"><i class="fa-solid fa-check done"></i> <span data-i18n-key="games_c1">Engine
+              selected</span></div>
+          <div class="wip-check-item"><i class="fa-solid fa-spinner pend fa-spin"></i> <span
+              data-i18n-key="games_c2">First game dev</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span
+              data-i18n-key="games_c3">Playtesting</span></div>
+          <div class="wip-check-item"><i class="fa-regular fa-clock wait"></i> <span
+              data-i18n-key="wip_c4">Launch</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+     404 STATE
+═══════════════════════════════════════════ -->
+  <div id="page-404" role="main">
+    <div class="err-num">404</div>
+    <p class="err-msg" data-i18n-key="err_title">PAGE NOT FOUND</p>
+    <p class="err-sub" data-i18n-key="err_sub">That hash/route doesn't exist on this plane of reality.</p>
+    <button class="err-home" onclick="navigate('home',{preventDefault:()=>{}})">
+      <i class="fa-solid fa-arrow-left"></i> <span data-i18n-key="err_back">BACK TO HOME</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════
+     NEWSLETTER
+  ═══════════════════════════════════════════ -->
+  <section class="newsletter" aria-label="Newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-head">
+        <h2 class="newsletter-title"><span class="orange">//</span> <span data-i18n-key="newsletter_title">NEWSLETTER</span></h2>
+        <p class="newsletter-sub" data-i18n-key="newsletter_sub">Occasional updates on new projects, music and experiments. No spam, ever.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+        <input class="newsletter-input" type="email" name="email" data-i18n-placeholder="newsletter_email_ph" placeholder="your@email.com" aria-label="Email address" />
+        <button class="newsletter-submit" type="submit" data-i18n-key="newsletter_subscribe">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <strong>crii.me</strong><br>
+        <span id="footer-copy-text">© <span id="copyright-year"></span> crii.me — All rights reserved.</span><br>
+        <span style="font-size:0.7rem;color:var(--gray-600);" data-i18n-key="footer_built">Built with vanilla HTML, CSS
+          &amp; JS. Deployed on GitHub Pages.</span>
+      </div>
+      <div class="footer-lang-wrap">
+        <div class="footer-lang-col">
+          <span class="footer-lang-label" data-i18n-key="footer_lang_label">LANGUAGE</span>
+          <select id="lang-select" aria-label="Select language" onchange="setLang(this.value)">
+            <option value="en">🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+          </select>
+        </div>
+        <button class="contact-btn" onclick="openContact()" aria-label="Open contact form">
+          <i class="fa-solid fa-paper-plane"></i> <span data-i18n-key="contact_btn">CONTACT ME</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+     COOKIE BANNER
+═══════════════════════════════════════════ -->
+  <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-live="polite">
+    <div class="cookie-text">
+      <strong id="cookie-title" data-i18n-key="cookie_title">🍪 Cookie Notice</strong><br>
+      <span data-i18n-key="cookie_body">This site uses minimal cookies for analytics and preferences. No tracking or ad
+        cookies. You can accept or decline.</span>
+    </div>
+    <div class="cookie-btns">
+      <button class="cookie-btn reject" onclick="cookieDecline()" data-i18n-key="cookie_reject">DECLINE</button>
+      <button class="cookie-btn accept" onclick="cookieAccept()" data-i18n-key="cookie_accept">ACCEPT</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     CONTACT MODAL
+  ═══════════════════════════════════════════ -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="contact-overlay" onclick="closeContact()"></div>
+    <div class="contact-modal-content">
+      <button class="contact-close" onclick="closeContact()" aria-label="Close contact form">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h2 class="contact-modal-title" id="contact-modal-title"><span class="orange">//</span> <span data-i18n-key="contact_title">CONTACT ME</span></h2>
+      <p class="contact-modal-sub" data-i18n-key="contact_sub">Send a message and I'll get back to you as soon as I can.</p>
+      <form class="contact-form" onsubmit="return handleContact(event)">
+        <input class="contact-input" type="text" name="name" data-i18n-placeholder="contact_name_ph" placeholder="Your name" aria-label="Name" />
+        <input class="contact-input" type="email" name="email" data-i18n-placeholder="contact_email_ph" placeholder="your@email.com" aria-label="Email address" />
+        <textarea class="contact-input contact-textarea" name="message" rows="4" data-i18n-placeholder="contact_message_ph" placeholder="Your message" aria-label="Message"></textarea>
+        <button class="contact-submit" type="submit" data-i18n-key="contact_send">SEND</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+  <script>
+    /* ════════════════════════════════════════════
+       i18n TRANSLATIONS
+    ════════════════════════════════════════════ */
+    const TRANSLATIONS = {
+      en: {
+        nav_home: 'HOME', nav_about: 'ABOUT', nav_projects: 'PROJECTS', nav_blog: 'BLOG', nav_music: 'MUSIC', nav_art: 'ART', nav_games: 'GAMES', nav_discord: 'DISCORD',
+        status_open: 'OPEN TO WORK',
+        hero_bio: 'Developer, artist and tinkerer building things at the intersection of code, creativity and chaos. Always shipping something new — check the projects tab.',
+        stat_projects: 'Projects', stat_wip: 'WIP', stat_ideas: 'Ideas',
+        links_label: 'FIND ME ONLINE', links_work: 'WORK & PROJECTS',
+        link_music: 'Music on SoundCloud', link_email: 'Email me',
+        link_portfolio: 'All Projects', link_blog: 'Blog', link_musicpage: 'Music Page', link_artpage: 'Art & Drawings', link_gamespage: 'Games',
+        proj_title: 'PROJECTS', proj_view: 'VIEW PROJECT',
+        p1_title: 'Project Alpha', p1_desc: 'A full-stack web app built for real-time collaboration. Features live updates, role-based auth and a brutalist UI.',
+        p2_title: 'CLI Toolkit', p2_desc: 'A personal command-line utility belt — scaffolders, API helpers, and dev shortcuts all in one package.',
+        p3_title: 'Pixel Dungeon', p3_desc: 'A procedurally generated browser dungeon crawler with retro pixel art and permadeath mechanics.',
+        p4_title: 'Brand System', p4_desc: 'A complete visual identity and design system for a local music collective. Type, color, motion, all documented.',
+        p5_title: 'REST Boilerplate', p5_desc: 'Production-ready Express API boilerplate with JWT auth, rate limiting, OpenAPI docs, and Docker setup.',
+        p6_title: 'Beat Sequencer', p6_desc: 'An in-browser 16-step drum machine and synth sequencer using the Web Audio API. No plugins needed.',
+        blog_title: 'BLOG', music_title: 'MUSIC', art_title: 'ART & DRAWINGS', games_title: 'GAMES',
+        wip_sub: 'Writing about code, creativity, and whatever\'s interesting this week. Coming soon.',
+        music_sub: 'Beats, tracks and experiments. Original productions and remixes are on their way.',
+        art_sub: 'Sketches, illustrations and digital art. The gallery is being curated. Check back soon.',
+        games_sub: 'Browser games, experiments and interactive toys. Playable soon directly here at crii.me.',
+        wip_tag: 'WORK IN PROGRESS', wip_email_ph: 'your@email.com', wip_notify_btn: 'NOTIFY ME',
+        wip_c1: 'Platform chosen', wip_c2: 'Design done', wip_c3: 'Writing first posts', wip_c4: 'Launch',
+        music_c1: 'Studio setup', music_c2: 'Recording demos', music_c3: 'Mixing & mastering',
+        art_c1: 'Archive sorted', art_c2: 'Scanning artworks', art_c3: 'Gallery build',
+        games_c1: 'Engine selected', games_c2: 'First game dev', games_c3: 'Playtesting',
+        err_title: 'PAGE NOT FOUND', err_sub: 'That hash/route doesn\'t exist on this plane of reality.', err_back: 'BACK TO HOME',
+        cookie_title: '🍪 Cookie Notice',
+        cookie_body: 'This site uses minimal cookies for analytics and preferences. No tracking or ad cookies. You can accept or decline.',
+        cookie_accept: 'ACCEPT', cookie_reject: 'DECLINE',
+        footer_copy: '© {year} crii.me — All rights reserved.',
+        footer_built: 'Built with vanilla HTML, CSS & JS. Deployed on GitHub Pages.',
+        footer_lang_label: 'LANGUAGE',
+        notify_success: '✓ You\'re on the list!', notify_fail: 'Enter a valid email.',
+        newsletter_title: 'NEWSLETTER',
+        newsletter_sub: 'Occasional updates on new projects, music and experiments. No spam, ever.',
+        newsletter_email_ph: 'your@email.com',
+        newsletter_subscribe: 'SUBSCRIBE',
+        contact_btn: 'CONTACT ME',
+        contact_title: 'CONTACT ME',
+        contact_sub: 'Send a message and I\'ll get back to you as soon as I can.',
+        contact_name_ph: 'Your name',
+        contact_email_ph: 'your@email.com',
+        contact_message_ph: 'Your message',
+        contact_send: 'SEND',
+        contact_success: '✓ Message sent!',
+        marquee_items: ['DEVELOPER', 'ARTIST', 'BUILDER', 'MUSICIAN', 'DESIGNER', 'TINKERER', 'crii.me']
+      },
+      it: {
+        nav_home: 'HOME', nav_about: 'CHI SONO', nav_projects: 'PROGETTI', nav_blog: 'BLOG', nav_music: 'MUSICA', nav_art: 'ARTE', nav_games: 'GIOCHI', nav_discord: 'DISCORD',
+        status_open: 'DISPONIBILE',
+        hero_bio: 'Sviluppatore, artista e sperimentatore che costruisce cose all\'incrocio tra codice, creatività e caos. Sempre con qualcosa di nuovo in arrivo — dai un\'occhiata ai progetti.',
+        stat_projects: 'Progetti', stat_wip: 'In Corso', stat_ideas: 'Idee',
+        links_label: 'TROVAMI ONLINE', links_work: 'LAVORI & PROGETTI',
+        link_music: 'Musica su SoundCloud', link_email: 'Scrivimi',
+        link_portfolio: 'Tutti i Progetti', link_blog: 'Blog', link_musicpage: 'Pagina Musica', link_artpage: 'Arte & Disegni', link_gamespage: 'Giochi',
+        proj_title: 'PROGETTI', proj_view: 'VEDI PROGETTO',
+        p1_title: 'Progetto Alpha', p1_desc: 'Una web app full-stack per la collaborazione in tempo reale. Include aggiornamenti live, autenticazione per ruoli e un\'interfaccia brutalista.',
+        p2_title: 'CLI Toolkit', p2_desc: 'Un toolkit da riga di comando personale — scaffolding, helper API e scorciatoie di sviluppo in un unico pacchetto.',
+        p3_title: 'Pixel Dungeon', p3_desc: 'Un dungeon crawler procedurale nel browser con pixel art retrò e meccaniche di permadeath.',
+        p4_title: 'Sistema di Brand', p4_desc: 'Un\'identità visiva e sistema di design completo per un collettivo musicale locale. Tipografia, colori, motion, tutto documentato.',
+        p5_title: 'REST Boilerplate', p5_desc: 'Boilerplate Express pronto per la produzione con auth JWT, rate limiting, docs OpenAPI e setup Docker.',
+        p6_title: 'Beat Sequencer', p6_desc: 'Un drum machine a 16 step e sequencer synth nel browser con Web Audio API. Nessun plugin necessario.',
+        blog_title: 'BLOG', music_title: 'MUSICA', art_title: 'ARTE & DISEGNI', games_title: 'GIOCHI',
+        wip_sub: 'Articoli su codice, creatività e tutto ciò che è interessante questa settimana. In arrivo.',
+        music_sub: 'Beat, tracce ed esperimenti. Produzioni originali e remix in arrivo.',
+        art_sub: 'Schizzi, illustrazioni e arte digitale. La galleria è in allestimento.',
+        games_sub: 'Giochi browser, esperimenti e giocattoli interattivi. Presto giocabili direttamente qui su crii.me.',
+        wip_tag: 'LAVORI IN CORSO', wip_email_ph: 'la-tua@email.com', wip_notify_btn: 'AVVISAMI',
+        wip_c1: 'Piattaforma scelta', wip_c2: 'Design completato', wip_c3: 'Scrittura dei primi articoli', wip_c4: 'Lancio',
+        music_c1: 'Studio configurato', music_c2: 'Registrazione demo', music_c3: 'Mix & mastering',
+        art_c1: 'Archivio ordinato', art_c2: 'Scansione opere', art_c3: 'Galleria in costruzione',
+        games_c1: 'Engine scelto', games_c2: 'Sviluppo primo gioco', games_c3: 'Playtest',
+        err_title: 'PAGINA NON TROVATA', err_sub: 'Questo percorso non esiste in questo piano della realtà.', err_back: 'TORNA ALL\'INIZIO',
+        cookie_title: '🍪 Informativa Cookie',
+        cookie_body: 'Questo sito usa cookie minimi per analisi e preferenze. Nessun cookie di tracciamento o pubblicità. Puoi accettare o rifiutare.',
+        cookie_accept: 'ACCETTA', cookie_reject: 'RIFIUTA',
+        footer_copy: '© {year} crii.me — Tutti i diritti riservati.',
+        footer_built: 'Costruito con HTML, CSS e JS puro. Pubblicato su GitHub Pages.',
+        footer_lang_label: 'LINGUA',
+        notify_success: '✓ Sei nella lista!', notify_fail: 'Inserisci un\'email valida.',
+        newsletter_title: 'NEWSLETTER',
+        newsletter_sub: 'Aggiornamenti occasionali su nuovi progetti, musica ed esperimenti. Niente spam, mai.',
+        newsletter_email_ph: 'la-tua@email.com',
+        newsletter_subscribe: 'ISCRIVITI',
+        contact_btn: 'CONTATTAMI',
+        contact_title: 'CONTATTAMI',
+        contact_sub: 'Inviami un messaggio e ti risponderò appena possibile.',
+        contact_name_ph: 'Il tuo nome',
+        contact_email_ph: 'la-tua@email.com',
+        contact_message_ph: 'Il tuo messaggio',
+        contact_send: 'INVIA',
+        contact_success: '✓ Messaggio inviato!',
+        marquee_items: ['SVILUPPATORE', 'ARTISTA', 'CREATORE', 'MUSICISTA', 'DESIGNER', 'SPERIMENTATORE', 'crii.me']
+      }
+    };
+
+    /* ════════════════════════════════════════════
+       LANGUAGE ENGINE
+    ════════════════════════════════════════════ */
+    let currentLang = 'en';
+
+    function detectLang() {
+      const saved = localStorage.getItem('crii_lang');
+      if (saved) return saved;
+      const navLang = navigator.language || navigator.userLanguage || '';
+      if (navLang.toLowerCase().startsWith('it')) return 'it';
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz && tz.toLowerCase().startsWith('europe/rome')) return 'it';
+        if (tz && tz.toLowerCase().startsWith('europe/') && navLang.toLowerCase().startsWith('it')) return 'it';
+      } catch (e) { }
+      return 'en';
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('crii_lang', lang);
+      document.documentElement.lang = lang;
+      const footerSelect = document.querySelector('#lang-select');
+      if (footerSelect) footerSelect.value = lang;
+      const drawerSelect = document.querySelector('#drawer-lang-select');
+      if (drawerSelect) drawerSelect.value = lang;
+      applyTranslations();
+      buildMarquee();
+    }
+
+    function applyTranslations() {
+      const T = TRANSLATIONS[currentLang];
+      document.querySelectorAll('[data-i18n-key]').forEach(el => {
+        const key = el.getAttribute('data-i18n-key');
+        if (T[key]) {
+          // Preserve inner elements (WIP badges, icons, etc.) by only changing text nodes
+          if (el.children.length === 0) {
+            el.textContent = T[key];
+          } else {
+            // For mixed-content elements, replace the first text node only
+            for (let node of el.childNodes) {
+              if (node.nodeType === 3 && node.textContent.trim()) {
+                node.textContent = T[key] + ' ';
+                break;
+              }
+            }
+          }
+        }
+      });
+      // Placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (T[key]) el.placeholder = T[key];
+      });
+      // Update footer copyright
+      const yr = new Date().getFullYear();
+      const footerCopy = document.getElementById('footer-copy-text');
+      const T_copy = TRANSLATIONS[currentLang]['footer_copy'];
+      if (footerCopy && T_copy) footerCopy.textContent = T_copy.replace('{year}', yr);
+      // Update page title & html lang
+      document.title = currentLang === 'it'
+        ? 'crii.me — Portfolio Creativo & Link Hub'
+        : 'crii.me — Creative Portfolio & Link Hub';
+    }
+
+    /* ════════════════════════════════════════════
+       TAB / NAVIGATION ENGINE
+    ════════════════════════════════════════════ */
+    const VALID_ROUTES = ['home', 'projects', 'music', 'art', 'games'];
+
+    function navigate(route, e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      if (!VALID_ROUTES.includes(route)) {
+        show404(); return;
+      }
+
+      // Hide 404
+      document.getElementById('page-404').classList.remove('active');
+
+      // Update sections
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('section-' + route);
+      if (target) {
+        target.classList.add('active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Update tabs
+      document.querySelectorAll('.nav-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      const activeTab = document.getElementById('tab-' + route);
+      if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-selected', 'true');
+      }
+
+      // Update drawer tabs
+      document.querySelectorAll('.drawer-tab').forEach(t => {
+        t.classList.remove('active');
+      });
+      const activeDrawerTab = document.getElementById('drawer-tab-' + route);
+      if (activeDrawerTab) {
+        activeDrawerTab.classList.add('active');
+      }
+
+      // Close Spotify panel if open on navigate
+      const spotifyPanel = document.getElementById('spotify-side-panel');
+      const spotifyBtn = document.getElementById('spotify-toggle-btn');
+      if (spotifyPanel && spotifyPanel.classList.contains('open')) {
+        spotifyPanel.classList.remove('open');
+        spotifyBtn.classList.remove('open');
+      }
+
+      // Update hash
+      history.pushState({ route }, '', '#' + route);
+    }
+
+    function show404() {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.getElementById('page-404').classList.add('active');
+      history.pushState({ route: '404' }, '', '#404');
+    }
+
+    function handleHashRoute() {
+      const hash = location.hash.replace('#', '').toLowerCase();
+      if (!hash || hash === '') { navigate('home', null); return; }
+      if (VALID_ROUTES.includes(hash)) { navigate(hash, null); }
+      else { show404(); }
+    }
+
+    window.addEventListener('popstate', handleHashRoute);
+
+    /* ════════════════════════════════════════════
+       MARQUEE BUILD
+    ════════════════════════════════════════════ */
+    function buildMarquee() {
+      const items = TRANSLATIONS[currentLang].marquee_items;
+      const icons = ['fa-code', 'fa-palette', 'fa-hammer', 'fa-music', 'fa-pen-nib', 'fa-flask', 'fa-star'];
+      let html = '';
+      const repeat = 3;
+      for (let r = 0; r < repeat; r++) {
+        items.forEach((item, i) => {
+          html += `<span><i class="fa-solid ${icons[i % icons.length]}"></i>${item}</span>`;
+        });
+      }
+      const inner = document.getElementById('marquee-inner');
+      inner.innerHTML = html + html; // double for seamless loop
+    }
+
+    /* ════════════════════════════════════════════
+       COOKIE CONSENT
+    ════════════════════════════════════════════ */
+    function initCookie() {
+      const consent = localStorage.getItem('crii_cookie');
+      if (!consent) {
+        setTimeout(() => {
+          const banner = document.getElementById('cookie-banner');
+          banner.classList.add('visible');
+        }, 1200);
+      }
+    }
+    function cookieAccept() {
+      localStorage.setItem('crii_cookie', 'accepted');
+      dismissCookie();
+    }
+    function cookieDecline() {
+      localStorage.setItem('crii_cookie', 'declined');
+      dismissCookie();
+    }
+    function dismissCookie() {
+      const banner = document.getElementById('cookie-banner');
+      banner.style.transform = 'translateY(100%)';
+      setTimeout(() => banner.classList.add('hidden'), 500);
+    }
+
+    /* ════════════════════════════════════════════
+       NOTIFY ME (WIP sections)
+    ════════════════════════════════════════════ */
+    function handleNotify(inputId) {
+      const input = document.getElementById(inputId);
+      const T = TRANSLATIONS[currentLang];
+      if (!input || !input.value || !input.value.includes('@')) {
+        input.style.background = '#fff0f0';
+        input.style.borderColor = '#ff0000';
+        input.placeholder = T.notify_fail;
+        setTimeout(() => {
+          input.style.background = '';
+          input.style.borderColor = '';
+          input.placeholder = T.wip_email_ph;
+        }, 2000);
+        return;
+      }
+      const btn = input.nextElementSibling;
+      const emailValue = input.value;
+
+      // Submit email via StaticForms
+      const formData = new FormData();
+      formData.append('apiKey', 'sf_0297a966aa1938c82154bf35');
+      formData.append('subject', 'crii.me submission');
+      formData.append('email', emailValue);
+      formData.append('section', inputId.split('-')[0]);
+      fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => console.log('StaticForms success:', data))
+      .catch(error => console.error('StaticForms error:', error));
+
+      btn.textContent = T.notify_success;
+      btn.style.background = '#22c55e';
+      input.value = '';
+      input.disabled = true;
+      btn.disabled = true;
+    }
+
+    /* ════════════════════════════════════════════
+       TOGGLE DRAWER & SPOTIFY
+    ════════════════════════════════════════════ */
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+      } else {
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function toggleSpotifyPanel() {
+      const panel = document.getElementById('spotify-side-panel');
+      const btn = document.getElementById('spotify-toggle-btn');
+      const isOpen = panel.classList.contains('open');
+      if (isOpen) {
+        panel.classList.remove('open');
+        btn.classList.remove('open');
+      } else {
+        panel.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    /* ════════════════════════════════════════════
+       COPYRIGHT YEAR
+    ════════════════════════════════════════════ */
+    function initCopyright() {
+      const yr = new Date().getFullYear();
+      const el = document.getElementById('copyright-year');
+      if (el) el.textContent = yr;
+    }
+
+    /* ════════════════════════════════════════════
+       NEWSLETTER
+    ════════════════════════════════════════════ */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const form = e.target;
+      const input = form.querySelector('input[type="email"]');
+      const T = TRANSLATIONS[currentLang];
+      if (!input || !input.value || !input.value.includes('@')) {
+        input.style.background = '#fff0f0';
+        input.style.borderColor = '#ff0000';
+        input.placeholder = T.notify_fail;
+        setTimeout(() => {
+          input.style.background = '';
+          input.style.borderColor = '';
+          input.placeholder = T.newsletter_email_ph;
+        }, 2000);
+        return false;
+      }
+      const emailValue = input.value;
+      const formData = new FormData();
+      formData.append('apiKey', 'sf_0297a966aa1938c82154bf35');
+      formData.append('subject', 'crii.me submission');
+      formData.append('email', emailValue);
+      formData.append('section', 'newsletter');
+      fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => console.log('StaticForms success:', data))
+        .catch(error => console.error('StaticForms error:', error));
+
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.textContent = T.notify_success;
+        btn.style.background = '#22c55e';
+        btn.style.color = '#0A0A0A';
+      }
+      input.value = '';
+      input.disabled = true;
+      if (btn) btn.disabled = true;
+      return false;
+    }
+
+    /* ════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════ */
+    function openContact() {
+      const modal = document.getElementById('contact-modal');
+      if (!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      const first = modal.querySelector('input, textarea');
+      if (first) setTimeout(() => first.focus(), 200);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeContact() {
+      const modal = document.getElementById('contact-modal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function handleContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const T = TRANSLATIONS[currentLang];
+      const name = form.querySelector('input[name="name"]');
+      const email = form.querySelector('input[name="email"]');
+      const message = form.querySelector('textarea[name="message"]');
+      const btn = form.querySelector('button[type="submit"]');
+
+      function flag(field) {
+        field.style.background = '#fff0f0';
+        field.style.borderColor = '#ff0000';
+        setTimeout(() => {
+          field.style.background = '';
+          field.style.borderColor = '';
+        }, 2000);
+      }
+
+      if (!name || !name.value.trim()) { if (name) flag(name); return false; }
+      if (!email || !email.value || !email.value.includes('@')) { if (email) flag(email); return false; }
+      if (!message || !message.value.trim()) { if (message) flag(message); return false; }
+
+      const formData = new FormData();
+      formData.append('apiKey', 'sf_0297a966aa1938c82154bf35');
+      formData.append('subject', 'crii.me submission');
+      formData.append('name', name.value.trim());
+      formData.append('email', email.value.trim());
+      formData.append('message', message.value.trim());
+      fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => console.log('StaticForms success:', data))
+        .catch(error => console.error('StaticForms error:', error));
+
+      if (btn) {
+        btn.textContent = T.contact_success;
+        btn.style.background = '#22c55e';
+        btn.style.color = '#0A0A0A';
+        btn.disabled = true;
+      }
+      name.value = '';
+      email.value = '';
+      message.value = '';
+      return false;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeContact();
+    });
+
+    /* ════════════════════════════════════════════
+       INIT
+    ════════════════════════════════════════════ */
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLang = detectLang();
+      setLang(currentLang);
+      buildMarquee();
+      initCopyright();
+      initCookie();
+      handleHashRoute();
+    });
+  </script>
+
+</body>
+
+</html>

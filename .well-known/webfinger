@@ -1,0 +1,50 @@
+{
+  "subject": "acct:criime@crii.me",
+  "aliases": [
+    "https://crii.me",
+    "https://crii.me/@criime"
+  ],
+  "properties": {
+    "https://schema.org/name": "crii.me",
+    "https://schema.org/description": "Developer, artist and builder. Projects, music, art and games at crii.me.",
+    "https://schema.org/url": "https://crii.me"
+  },
+  "links": [
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://crii.me"
+    },
+    {
+      "rel": "https://webfinger.net/rel/avatar",
+      "type": "image/jpeg",
+      "href": "https://crii.me/avatar.jpg"
+    },
+    {
+      "rel": "http://ostatus.org/schema/1.0/subscribe",
+      "template": "https://crii.me/?follow={uri}"
+    },
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://crii.me/.well-known/actor.json"
+    },
+    {
+      "rel": "http://webfinger.net/rel/blog",
+      "type": "text/html",
+      "href": "https://crii.me/#blog"
+    },
+    {
+      "rel": "https://schema.org/sameAs",
+      "href": "https://github.com/criime"
+    },
+    {
+      "rel": "https://schema.org/sameAs",
+      "href": "https://twitter.com/criime"
+    },
+    {
+      "rel": "https://schema.org/sameAs",
+      "href": "https://instagram.com/criime"
+    }
+  ]
+}

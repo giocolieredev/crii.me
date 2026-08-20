@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord — crii.me</title>
+
+  <!-- ═══ SEO ═══ -->
+  <meta name="description"
+    content="Discord — Connect with Cri on Discord. View profile and get in touch directly." />
+  <meta name="keywords"
+    content="discord, contact, portfolio, creative, developer, artist, musician, games, blog, crii.me, brutalist design" />
+  <meta name="author" content="crii.me" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://crii.me/discord.html" />
+
+  <!-- ═══ OpenGraph ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://crii.me/discord.html" />
+  <meta property="og:title" content="Discord — crii.me" />
+  <meta property="og:description"
+    content="Connect with Cri on Discord. View profile and get in touch directly." />
+  <meta property="og:image" content="https://crii.me/og-image.png" />
+  <meta property="og:site_name" content="crii.me" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ═══ Twitter Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@criime" />
+  <meta name="twitter:title" content="Discord — crii.me" />
+  <meta name="twitter:description"
+    content="Connect with Cri on Discord. View profile and get in touch directly." />
+  <meta name="twitter:image" content="https://crii.me/og-image.png" />
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FF6B00'/><text x='4' y='24' font-family='monospace' font-size='20' font-weight='900' fill='white'>C</text></svg>" />
+
+  <!-- ═══ Font ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- ═══ Icons ═══ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════════ */
+    :root {
+      --orange: #FF6B00;
+      --orange-d: #CC5500;
+      --orange-l: #FF8C33;
+      --black: #0A0A0A;
+      --white: #FAFAFA;
+      --gray-100: #F0EFED;
+      --gray-200: #D8D6D2;
+      --gray-400: #9A9890;
+      --gray-600: #5A5855;
+      --gray-800: #2A2927;
+      --border: 3px solid var(--black);
+      --border-sm: 2px solid var(--black);
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --speed: 0.15s;
+    }
+
+    /* ══════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-head);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: var(--font-head);
+    }
+
+    /* ══════════════════════════════════════════
+       MARQUEE
+    ══════════════════════════════════════════ */
+    .marquee-wrap {
+      background: var(--black);
+      color: var(--orange);
+      overflow: hidden;
+      border-top: var(--border);
+      border-bottom: var(--border);
+      padding: 10px 0;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0 2rem;
+    }
+
+    .marquee-inner span i {
+      color: var(--orange-l);
+      margin-right: 6px;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--black);
+      border-bottom: var(--border);
+      border-bottom-color: var(--orange);
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--orange);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      border-right: var(--border);
+      border-right-color: var(--gray-800);
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .nav-logo:hover {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .nav-tab {
+      background: none;
+      border: none;
+      border-right: 1px solid var(--gray-800);
+      color: var(--gray-400);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 16px;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+      position: relative;
+    }
+
+    .nav-tab:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+
+    .nav-tab.active {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    .nav-tab .wip-badge {
+      font-size: 0.55rem;
+      background: var(--orange);
+      color: var(--black);
+      padding: 1px 4px;
+      font-weight: 900;
+      vertical-align: super;
+      margin-left: 3px;
+    }
+
+    .nav-tab.active .wip-badge {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO / CONTENT AREA
+    ══════════════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+      gap: 32px;
+    }
+
+    /* Discord Card Custom Styles */
+    .discord-card {
+      border: var(--border);
+      background: var(--white);
+      padding: 40px 30px;
+      box-shadow: -8px 8px 0 var(--black);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .discord-card:hover {
+      transform: translate(2px, -2px);
+      box-shadow: -10px 10px 0 var(--orange);
+    }
+
+    .discord-widget-wrapper {
+      position: relative;
+      width: 340px;
+      height: 192px;
+      border: var(--border);
+      box-shadow: -4px 4px 0 var(--black);
+      background: #2a2927;
+      overflow: hidden;
+      margin-bottom: 30px;
+      transition: transform var(--speed), box-shadow var(--speed);
+    }
+
+    .discord-widget-wrapper:hover {
+      transform: translate(2px, -2px);
+      box-shadow: -6px 6px 0 var(--orange);
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title span {
+      color: var(--orange);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      border: var(--border);
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .project-link:hover {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .site-footer {
+      background: var(--black);
+      color: var(--white);
+      border-top: var(--border);
+      padding: 40px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .footer-copy {
+      line-height: 1.8;
+      color: var(--gray-400);
+    }
+
+    .footer-copy strong {
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+
+    .footer-lang-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .footer-lang-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      letter-spacing: 0.1em;
+    }
+
+    #lang-select {
+      background: var(--black);
+      color: var(--white);
+      border: var(--border-sm);
+      border-color: var(--gray-800);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    #lang-select:focus {
+      border-color: var(--orange);
+    }
+
+    /* ══════════════════════════════════════════
+       COOKIE BANNER
+    ══════════════════════════════════════════ */
+    #cookie-banner {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: calc(100% - 48px);
+      max-width: 420px;
+      background: var(--white);
+      border: var(--border);
+      box-shadow: -8px 8px 0 var(--black);
+      padding: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transform: translateY(150%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #cookie-banner.visible {
+      transform: translateY(0);
+    }
+
+    #cookie-banner.hidden {
+      display: none;
+    }
+
+    .cookie-text {
+      font-size: 0.85rem;
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    .cookie-text strong {
+      color: var(--black);
+      font-size: 0.95rem;
+    }
+
+    .cookie-btns {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cookie-btn {
+      flex: 1;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: var(--border-sm);
+      background: var(--white);
+      color: var(--black);
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .cookie-btn.accept {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    .cookie-btn.accept:hover {
+      background: var(--black);
+      color: var(--orange);
+      border-color: var(--black);
+    }
+
+    .cookie-btn.reject:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Scanlines overlay */
+    .scanlines {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(10, 10, 10, 0.015) 2px, rgba(10, 10, 10, 0.015) 4px);
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .nav-tab {
+        padding: 12px 12px;
+        font-size: 0.7rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-lang-wrap {
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+    }
+
+    .orange {
+      color: var(--orange);
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    hr.brutal {
+      border: none;
+      border-top: var(--border);
+      margin: 0;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border: 3px solid var(--black);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange-l);
+    }
+    html {
+      scrollbar-color: var(--orange) var(--black);
+      scrollbar-width: auto;
+    }
+
+    /* Global dropdown styling */
+    select {
+      background: var(--black);
+      color: var(--white);
+      border: var(--border-sm);
+      border-color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus {
+      border-color: var(--orange-l);
+    }
+    select option {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Burger Menu Button */
+    .burger-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--orange);
+      font-size: 1.5rem;
+      padding: 0 20px;
+      align-items: center;
+      cursor: pointer;
+      border-left: var(--border);
+      border-left-color: var(--gray-800);
+      transition: background var(--speed), color var(--speed);
+    }
+    .burger-btn:hover {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    /* Mobile drawer style */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      visibility: hidden;
+      pointer-events: none;
+      transition: visibility 0.3s;
+    }
+    .mobile-drawer.open {
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .drawer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-drawer.open .drawer-overlay {
+      opacity: 1;
+    }
+    .drawer-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 280px;
+      max-width: 80%;
+      background: var(--black);
+      border-left: var(--border);
+      border-left-color: var(--orange);
+      display: flex;
+      flex-direction: column;
+      transform: translate3d(100%, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.open .drawer-content {
+      transform: translate3d(0, 0, 0);
+    }
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 2px solid var(--gray-800);
+    }
+    .drawer-title {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+    }
+    .drawer-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: color var(--speed);
+    }
+    .drawer-close:hover {
+      color: var(--orange);
+    }
+    .drawer-links {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+    .drawer-tab {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 24px;
+      text-align: left;
+      transition: background var(--speed), color var(--speed);
+      border-bottom: 1px solid var(--gray-900);
+      display: block;
+      width: 100%;
+    }
+    .drawer-tab:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+    .drawer-tab.active {
+      background: var(--orange);
+      color: var(--black);
+    }
+    .drawer-tab .wip-badge {
+      font-size: 0.6rem;
+      background: var(--orange);
+      color: var(--black);
+      padding: 1px 4px;
+      font-weight: 900;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+    .drawer-tab.active .wip-badge {
+      background: var(--black);
+      color: var(--orange);
+    }
+    .drawer-footer {
+      padding: 20px;
+      border-top: 2px solid var(--gray-800);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .drawer-footer-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-600);
+    }
+    #drawer-lang-select {
+      background: var(--gray-800);
+      border: var(--border-sm);
+      border-color: var(--gray-600);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 7px 12px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23FF6B00'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+    #drawer-lang-select:focus {
+      outline: 2px solid var(--orange);
+    }
+
+    @media (max-width: 767px) {
+      .nav-tabs {
+        display: none;
+      }
+      .burger-btn {
+        display: flex;
+        margin-left: auto;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       NEWSLETTER
+    ══════════════════════════════════════════ */
+    .newsletter {
+      background: var(--orange);
+      border-top: var(--border);
+      border-bottom: var(--border);
+      padding: 48px 24px;
+    }
+
+    .newsletter-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .newsletter-head {
+      flex: 1 1 300px;
+    }
+
+    .newsletter-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .newsletter-title .orange {
+      color: var(--black);
+    }
+
+    .newsletter-sub {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(10, 10, 10, 0.75);
+      max-width: 420px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex: 1 1 300px;
+      max-width: 440px;
+      border: var(--border);
+      background: var(--black);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      background: var(--white);
+      color: var(--black);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .newsletter-input:focus {
+      background: var(--gray-100);
+    }
+
+    .newsletter-submit {
+      background: var(--black);
+      color: var(--orange);
+      border: none;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .newsletter-submit:hover {
+      background: var(--gray-800);
+      color: var(--white);
+    }
+
+    /* Contact button next to language selector */
+    .footer-lang-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-btn {
+      background: var(--orange);
+      color: var(--black);
+      border: var(--border-sm);
+      border-color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 7px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .contact-btn:hover {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    /* Contact modal */
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      visibility: hidden;
+      pointer-events: none;
+      transition: visibility 0.3s;
+    }
+
+    .contact-modal.open {
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .contact-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .contact-modal.open .contact-overlay {
+      opacity: 1;
+    }
+
+    .contact-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      background: var(--white);
+      border: var(--border);
+      box-shadow: -8px 8px 0 var(--black);
+      padding: 32px;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+
+    .contact-modal.open .contact-modal-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .contact-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: color var(--speed);
+    }
+
+    .contact-close:hover {
+      color: var(--orange);
+    }
+
+    .contact-modal-title {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .contact-modal-sub {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-input {
+      width: 100%;
+      border: var(--border-sm);
+      background: var(--white);
+      color: var(--black);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .contact-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .contact-input:focus {
+      background: var(--gray-100);
+      border-color: var(--orange);
+    }
+
+    .contact-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-submit {
+      background: var(--black);
+      color: var(--orange);
+      border: var(--border);
+      border-color: var(--black);
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background var(--speed), color var(--speed);
+    }
+
+    .contact-submit:hover {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Scanlines overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+     MARQUEE TICKER
+  ═══════════════════════════════════════════ -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-inner" id="marquee-inner">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     NAV / TABS
+  ═══════════════════════════════════════════ -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html#home" class="nav-logo" id="nav-logo">crii.me</a>
+    <div class="nav-tabs" role="tablist">
+      <a href="index.html#home" class="nav-tab" id="tab-home" data-i18n-key="nav_home" style="display: inline-flex; align-items: center; text-decoration: none;">HOME</a>
+      <a href="about.html" class="nav-tab" id="tab-about" data-i18n-key="nav_about" style="display: inline-flex; align-items: center; text-decoration: none;">ABOUT</a>
+      <a href="index.html#projects" class="nav-tab" id="tab-projects" data-i18n-key="nav_projects" style="display: inline-flex; align-items: center; text-decoration: none;">PROJECTS</a>
+      <a href="https://blog.crii.me/" class="nav-tab" id="tab-blog" data-i18n-key="nav_blog" style="display: inline-flex; align-items: center; text-decoration: none;">BLOG</a>
+      <a href="index.html#music" class="nav-tab" id="tab-music" data-i18n-key="nav_music" style="display: inline-flex; align-items: center; text-decoration: none;">MUSIC <span class="wip-badge">WIP</span></a>
+      <a href="index.html#art" class="nav-tab" id="tab-art" data-i18n-key="nav_art" style="display: inline-flex; align-items: center; text-decoration: none;">ART <span class="wip-badge">WIP</span></a>
+      <a href="index.html#games" class="nav-tab" id="tab-games" data-i18n-key="nav_games" style="display: inline-flex; align-items: center; text-decoration: none;">GAMES <span class="wip-badge">WIP</span></a>
+      <a href="discord.html" class="nav-tab active" id="tab-discord" data-i18n-key="nav_discord" style="display: inline-flex; align-items: center; text-decoration: none;">DISCORD</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+     SECTION: DISCORD
+  ═══════════════════════════════════════════ -->
+  <main class="hero" style="min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="discord-card" style="max-width: 460px; width: 100%;">
+      <h1 class="section-title" style="margin-bottom: 8px;"><span class="orange">//</span> DISCORD</h1>
+      <p class="mono" style="font-size: 0.9rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px;" data-i18n-key="discord_subtitle">GET IN TOUCH</p>
+      <hr class="brutal" style="margin-bottom: 24px; width: 100%;">
+      
+      <p style="font-size: 0.95rem; color: var(--gray-600); margin-bottom: 24px; line-height: 1.6;" data-i18n-key="discord_text">
+        Click the widget below to view my Discord profile and send me a message!
+      </p>
+
+      <!-- Discord Widget Wrapper with Link Overlay -->
+      <div class="discord-widget-wrapper">
+        <iframe
+            title="Discord user embed"
+            width="340"
+            height="192"
+            frameborder="0"
+            sandbox="allow-scripts"
+            src="https://widgets.vendicated.dev/user?id=842087107908206654&theme=light&banner=true&full-banner=true&rounded-corners=false&discord-icon=true&badges=true&guess-nitro=true&background-color=%23ff6d00&foreground-color=%232a2927"
+            style="display: block; border: none; width: 340px; height: 192px;"
+        ></iframe>
+        <a href="https://discord.com/users/842087107908206654" target="_blank" rel="noopener" aria-label="Open Discord Profile" style="position: absolute; inset: 0; z-index: 10; cursor: pointer; display: block;"></a>
+      </div>
+
+      <a class="project-link" href="index.html#home" style="display: inline-flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-arrow-left"></i> <span data-i18n-key="err_back">BACK TO HOME</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════
+     NEWSLETTER
+  ═══════════════════════════════════════════ -->
+  <section class="newsletter" aria-label="Newsletter">
+    <div class="newsletter-inner">
+      <div class="newsletter-head">
+        <h2 class="newsletter-title"><span class="orange">//</span> <span data-i18n-key="newsletter_title">NEWSLETTER</span></h2>
+        <p class="newsletter-sub" data-i18n-key="newsletter_sub">Occasional updates on new projects, music and experiments. No spam, ever.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+        <input class="newsletter-input" type="email" name="email" data-i18n-placeholder="newsletter_email_ph" placeholder="your@email.com" aria-label="Email address" />
+        <button class="newsletter-submit" type="submit" data-i18n-key="newsletter_subscribe">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <strong>crii.me</strong><br>
+        <span id="footer-copy-text">© <span id="copyright-year"></span> crii.me — All rights reserved.</span><br>
+        <span style="font-size:0.7rem;color:var(--gray-600);" data-i18n-key="footer_built">Built with vanilla HTML, CSS &amp; JS. Deployed on GitHub Pages.</span>
+      </div>
+      <div class="footer-lang-wrap">
+        <div class="footer-lang-col">
+          <span class="footer-lang-label" data-i18n-key="footer_lang_label">LANGUAGE</span>
+          <select id="lang-select" aria-label="Select language" onchange="setLang(this.value)">
+            <option value="en">🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+          </select>
+        </div>
+        <button class="contact-btn" onclick="openContact()" aria-label="Open contact form">
+          <i class="fa-solid fa-paper-plane"></i> <span data-i18n-key="contact_btn">CONTACT ME</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+     COOKIE BANNER
+  ═══════════════════════════════════════════ -->
+  <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-live="polite">
+    <div class="cookie-text">
+      <strong id="cookie-title" data-i18n-key="cookie_title">🍪 Cookie Notice</strong><br>
+      <span data-i18n-key="cookie_body">This site uses minimal cookies for analytics and preferences. No tracking or ad cookies. You can accept or decline.</span>
+    </div>
+    <div class="cookie-btns">
+      <button class="cookie-btn reject" onclick="cookieDecline()" data-i18n-key="cookie_reject">DECLINE</button>
+      <button class="cookie-btn accept" onclick="cookieAccept()" data-i18n-key="cookie_accept">ACCEPT</button>
+    </div>
+  </div>
+
+  <!-- Mobile side drawer menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-overlay" onclick="toggleDrawer()"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <span class="drawer-title">MENU</span>
+        <button class="drawer-close" onclick="toggleDrawer()" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="drawer-links">
+        <a href="index.html#home" class="drawer-tab" id="drawer-tab-home" data-i18n-key="nav_home">HOME</a>
+        <a href="about.html" class="drawer-tab" id="drawer-tab-about" data-i18n-key="nav_about">ABOUT</a>
+        <a href="index.html#projects" class="drawer-tab" id="drawer-tab-projects" data-i18n-key="nav_projects">PROJECTS</a>
+        <a href="https://blog.crii.me/" class="drawer-tab" id="drawer-tab-blog" data-i18n-key="nav_blog">BLOG</a>
+        <a href="index.html#music" class="drawer-tab" id="drawer-tab-music" data-i18n-key="nav_music">MUSIC <span class="wip-badge">WIP</span></a>
+        <a href="index.html#art" class="drawer-tab" id="drawer-tab-art" data-i18n-key="nav_art">ART <span class="wip-badge">WIP</span></a>
+        <a href="index.html#games" class="drawer-tab" id="drawer-tab-games" data-i18n-key="nav_games">GAMES <span class="wip-badge">WIP</span></a>
+        <a href="discord.html" class="drawer-tab active" id="drawer-tab-discord" data-i18n-key="nav_discord">DISCORD</a>
+      </div>
+      <div class="drawer-footer">
+        <span class="drawer-footer-label" data-i18n-key="footer_lang_label">LANGUAGE</span>
+        <select id="drawer-lang-select" aria-label="Select language" onchange="setLang(this.value); toggleDrawer()">
+          <option value="en">🇬🇧 English</option>
+          <option value="it">🇮🇹 Italiano</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     CONTACT MODAL
+  ═══════════════════════════════════════════ -->
+  <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
+    <div class="contact-overlay" onclick="closeContact()"></div>
+    <div class="contact-modal-content">
+      <button class="contact-close" onclick="closeContact()" aria-label="Close contact form">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h2 class="contact-modal-title" id="contact-modal-title"><span class="orange">//</span> <span data-i18n-key="contact_title">CONTACT ME</span></h2>
+      <p class="contact-modal-sub" data-i18n-key="contact_sub">Send a message and I'll get back to you as soon as I can.</p>
+      <form class="contact-form" onsubmit="return handleContact(event)">
+        <input class="contact-input" type="text" name="name" data-i18n-placeholder="contact_name_ph" placeholder="Your name" aria-label="Name" />
+        <input class="contact-input" type="email" name="email" data-i18n-placeholder="contact_email_ph" placeholder="your@email.com" aria-label="Email address" />
+        <textarea class="contact-input contact-textarea" name="message" rows="4" data-i18n-placeholder="contact_message_ph" placeholder="Your message" aria-label="Message"></textarea>
+        <button class="contact-submit" type="submit" data-i18n-key="contact_send">SEND</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script>
+    /* ════════════════════════════════════════════
+       i18n TRANSLATIONS
+    ════════════════════════════════════════════ */
+    const TRANSLATIONS = {
+      en: {
+        nav_home: 'HOME', nav_about: 'ABOUT', nav_projects: 'PROJECTS', nav_blog: 'BLOG', nav_music: 'MUSIC', nav_art: 'ART', nav_games: 'GAMES', nav_discord: 'DISCORD',
+        discord_subtitle: 'GET IN TOUCH',
+        discord_text: 'Click the widget below to view my Discord profile and send me a message!',
+        cookie_title: '🍪 Cookie Notice',
+        cookie_body: 'This site uses minimal cookies for analytics and preferences. No tracking or ad cookies. You can accept or decline.',
+        cookie_accept: 'ACCEPT', cookie_reject: 'DECLINE',
+        footer_copy: '© {year} crii.me — All rights reserved.',
+        footer_built: 'Built with vanilla HTML, CSS & JS. Deployed on GitHub Pages.',
+        footer_lang_label: 'LANGUAGE',
+        err_back: 'BACK TO HOME',
+        newsletter_title: 'NEWSLETTER',
+        newsletter_sub: 'Occasional updates on new projects, music and experiments. No spam, ever.',
+        newsletter_email_ph: 'your@email.com',
+        newsletter_subscribe: 'SUBSCRIBE',
+        contact_btn: 'CONTACT ME',
+        contact_title: 'CONTACT ME',
+        contact_sub: 'Send a message and I\'ll get back to you as soon as I can.',
+        contact_name_ph: 'Your name',
+        contact_email_ph: 'your@email.com',
+        contact_message_ph: 'Your message',
+        contact_send: 'SEND',
+        contact_success: '✓ Message sent!',
+        notify_success: '✓ You\'re on the list!',
+        notify_fail: 'Enter a valid email.',
+        marquee_items: ['DEVELOPER', 'ARTIST', 'BUILDER', 'MUSICIAN', 'DESIGNER', 'TINKERER', 'crii.me']
+      },
+      it: {
+        nav_home: 'HOME', nav_about: 'CHI SONO', nav_projects: 'PROGETTI', nav_blog: 'BLOG', nav_music: 'MUSICA', nav_art: 'ARTE', nav_games: 'GIOCHI', nav_discord: 'DISCORD',
+        discord_subtitle: 'CONTATTAMI',
+        discord_text: 'Clicca sul widget qui sotto per visualizzare il mio profilo Discord e inviarmi un messaggio!',
+        cookie_title: '🍪 Informativa Cookie',
+        cookie_body: 'Questo sito usa cookie minimi per analisi e preferenze. Nessun cookie di tracciamento o pubblicità. Puoi accettare o rifiutare.',
+        cookie_accept: 'ACCETTA', cookie_reject: 'RIFIUTA',
+        footer_copy: '© {year} crii.me — Tutti i diritti riservati.',
+        footer_built: 'Costruito con HTML, CSS e JS puro. Pubblicato su GitHub Pages.',
+        footer_lang_label: 'LINGUA',
+        err_back: 'TORNA ALL\'INIZIO',
+        newsletter_title: 'NEWSLETTER',
+        newsletter_sub: 'Aggiornamenti occasionali su nuovi progetti, musica ed esperimenti. Niente spam, mai.',
+        newsletter_email_ph: 'la-tua@email.com',
+        newsletter_subscribe: 'ISCRIVITI',
+        contact_btn: 'CONTATTAMI',
+        contact_title: 'CONTATTAMI',
+        contact_sub: 'Inviami un messaggio e ti risponderò appena possibile.',
+        contact_name_ph: 'Il tuo nome',
+        contact_email_ph: 'la-tua@email.com',
+        contact_message_ph: 'Il tuo messaggio',
+        contact_send: 'INVIA',
+        contact_success: '✓ Messaggio inviato!',
+        notify_success: '✓ Sei nella lista!',
+        notify_fail: 'Inserisci un\'email valida.',
+        marquee_items: ['SVILUPPATORE', 'ARTISTA', 'CREATORE', 'MUSICISTA', 'DESIGNER', 'SPERIMENTATORE', 'crii.me']
+      }
+    };
+
+    /* ════════════════════════════════════════════
+       LANGUAGE ENGINE
+    ════════════════════════════════════════════ */
+    let currentLang = 'en';
+
+    function detectLang() {
+      const saved = localStorage.getItem('crii_lang');
+      if (saved) return saved;
+      const navLang = navigator.language || navigator.userLanguage || '';
+      if (navLang.toLowerCase().startsWith('it')) return 'it';
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (tz && tz.toLowerCase().startsWith('europe/rome')) return 'it';
+        if (tz && tz.toLowerCase().startsWith('europe/') && navLang.toLowerCase().startsWith('it')) return 'it';
+      } catch (e) { }
+      return 'en';
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('crii_lang', lang);
+      document.documentElement.lang = lang;
+      const footerSelect = document.querySelector('#lang-select');
+      if (footerSelect) footerSelect.value = lang;
+      const drawerSelect = document.querySelector('#drawer-lang-select');
+      if (drawerSelect) drawerSelect.value = lang;
+      applyTranslations();
+      buildMarquee();
+    }
+
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+      } else {
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function applyTranslations() {
+      const T = TRANSLATIONS[currentLang];
+      document.querySelectorAll('[data-i18n-key]').forEach(el => {
+        const key = el.getAttribute('data-i18n-key');
+        if (T[key]) {
+          if (el.children.length === 0) {
+            el.textContent = T[key];
+          } else {
+            for (let node of el.childNodes) {
+              if (node.nodeType === 3 && node.textContent.trim()) {
+                node.textContent = T[key] + ' ';
+                break;
+              }
+            }
+          }
+        }
+      });
+      // Update footer copyright
+      const yr = new Date().getFullYear();
+      const footerCopy = document.getElementById('footer-copy-text');
+      const T_copy = TRANSLATIONS[currentLang]['footer_copy'];
+      if (footerCopy && T_copy) footerCopy.textContent = T_copy.replace('{year}', yr);
+      
+      // Update page title
+      document.title = currentLang === 'it'
+        ? 'crii.me — Discord'
+        : 'crii.me — Discord';
+    }
+
+    /* ════════════════════════════════════════════
+       MARQUEE BUILD
+    ═══════════════════════════════════════════ */
+    function buildMarquee() {
+      const items = TRANSLATIONS[currentLang].marquee_items;
+      const icons = ['fa-code', 'fa-palette', 'fa-hammer', 'fa-music', 'fa-pen-nib', 'fa-flask', 'fa-star'];
+      let html = '';
+      const repeat = 3;
+      for (let r = 0; r < repeat; r++) {
+        items.forEach((item, i) => {
+          html += `<span><i class="fa-solid ${icons[i % icons.length]}"></i>${item}</span>`;
+        });
+      }
+      const inner = document.getElementById('marquee-inner');
+      inner.innerHTML = html + html; // double for seamless loop
+    }
+
+    /* ════════════════════════════════════════════
+       COOKIE CONSENT
+    ════════════════════════════════════════════ */
+    function initCookie() {
+      const consent = localStorage.getItem('crii_cookie');
+      if (!consent) {
+        setTimeout(() => {
+          const banner = document.getElementById('cookie-banner');
+          banner.classList.add('visible');
+        }, 1200);
+      }
+    }
+    function cookieAccept() {
+      localStorage.setItem('crii_cookie', 'accepted');
+      dismissCookie();
+    }
+    function cookieDecline() {
+      localStorage.setItem('crii_cookie', 'declined');
+      dismissCookie();
+    }
+    function dismissCookie() {
+      const banner = document.getElementById('cookie-banner');
+      banner.style.transform = 'translateY(100%)';
+      setTimeout(() => banner.classList.add('hidden'), 500);
+    }
+
+    /* ════════════════════════════════════════════
+       COPYRIGHT YEAR
+    ════════════════════════════════════════════ */
+    function initCopyright() {
+      const yr = new Date().getFullYear();
+      const el = document.getElementById('copyright-year');
+      if (el) el.textContent = yr;
+    }
+
+    /* ════════════════════════════════════════════
+       NEWSLETTER
+    ════════════════════════════════════════════ */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const form = e.target;
+      const input = form.querySelector('input[type="email"]');
+      const T = TRANSLATIONS[currentLang];
+      if (!input || !input.value || !input.value.includes('@')) {
+        input.style.background = '#fff0f0';
+        input.style.borderColor = '#ff0000';
+        input.placeholder = T.notify_fail;
+        setTimeout(() => {
+          input.style.background = '';
+          input.style.borderColor = '';
+          input.placeholder = T.newsletter_email_ph;
+        }, 2000);
+        return false;
+      }
+      const emailValue = input.value;
+      const formData = new FormData();
+      formData.append('apiKey', 'sf_0297a966aa1938c82154bf35');
+      formData.append('subject', 'crii.me submission');
+      formData.append('email', emailValue);
+      formData.append('section', 'newsletter');
+      fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => console.log('StaticForms success:', data))
+        .catch(error => console.error('StaticForms error:', error));
+
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.textContent = T.notify_success;
+        btn.style.background = '#22c55e';
+        btn.style.color = '#0A0A0A';
+      }
+      input.value = '';
+      input.disabled = true;
+      if (btn) btn.disabled = true;
+      return false;
+    }
+
+    /* ════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════ */
+    function openContact() {
+      const modal = document.getElementById('contact-modal');
+      if (!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      const first = modal.querySelector('input, textarea');
+      if (first) setTimeout(() => first.focus(), 200);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeContact() {
+      const modal = document.getElementById('contact-modal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function handleContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const T = TRANSLATIONS[currentLang];
+      const name = form.querySelector('input[name="name"]');
+      const email = form.querySelector('input[name="email"]');
+      const message = form.querySelector('textarea[name="message"]');
+      const btn = form.querySelector('button[type="submit"]');
+
+      function flag(field) {
+        field.style.background = '#fff0f0';
+        field.style.borderColor = '#ff0000';
+        setTimeout(() => {
+          field.style.background = '';
+          field.style.borderColor = '';
+        }, 2000);
+      }
+
+      if (!name || !name.value.trim()) { if (name) flag(name); return false; }
+      if (!email || !email.value || !email.value.includes('@')) { if (email) flag(email); return false; }
+      if (!message || !message.value.trim()) { if (message) flag(message); return false; }
+
+      const formData = new FormData();
+      formData.append('apiKey', 'sf_0297a966aa1938c82154bf35');
+      formData.append('subject', 'crii.me submission');
+      formData.append('name', name.value.trim());
+      formData.append('email', email.value.trim());
+      formData.append('message', message.value.trim());
+      fetch('https://api.staticforms.dev/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => console.log('StaticForms success:', data))
+        .catch(error => console.error('StaticForms error:', error));
+
+      if (btn) {
+        btn.textContent = T.contact_success;
+        btn.style.background = '#22c55e';
+        btn.style.color = '#0A0A0A';
+        btn.disabled = true;
+      }
+      name.value = '';
+      email.value = '';
+      message.value = '';
+      return false;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeContact();
+    });
+
+    /* ════════════════════════════════════════════
+       INIT
+    ════════════════════════════════════════════ */
+    document.addEventListener('DOMContentLoaded', () => {
+      currentLang = detectLang();
+      setLang(currentLang);
+      buildMarquee();
+      initCopyright();
+      initCookie();
+    });
+  </script>
+
+</body>
+
+</html>

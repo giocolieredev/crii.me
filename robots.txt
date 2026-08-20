@@ -1,0 +1,77 @@
+# ════════════════════════════════════════════
+# robots.txt — crii.me
+# Last updated: 2025
+# ════════════════════════════════════════════
+
+# ── General crawlers ──────────────────────
+User-agent: *
+Allow: /
+Disallow: /.well-known/
+Disallow: /.webfinger/
+Disallow: /private/
+Crawl-delay: 2
+
+# ── Google ────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /.well-known/
+Disallow: /.webfinger/
+
+# ── Bing ──────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# ── AI / LLM crawlers ─────────────────────
+# If you want to be indexed by AI search: Allow
+# Change to Disallow if you prefer not to be trained on
+
+User-agent: GPTBot
+Allow: /
+Disallow: /.well-known/
+Disallow: /.webfinger/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# ── Spam / scraper bots ───────────────────
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# ── Sitemaps ──────────────────────────────
+Sitemap: https://crii.me/sitemap.xml
+Host: crii.me

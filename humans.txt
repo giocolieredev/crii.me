@@ -1,0 +1,48 @@
+/* ════════════════════════════════════════════
+   HUMANS.TXT — crii.me
+   The humans behind the machine.
+   humanstxt.org
+════════════════════════════════════════════ */
+
+
+/* ── TEAM ─────────────────────────────────── */
+
+The creator.
+  Name:     crii.me
+  Role:     Developer, Designer, Artist, Builder
+  Handle:   @crii.mp3
+  Contact:  hi@crii.me
+  Site:     https://crii.me
+  Location: Earth, probably.
+
+
+/* ── THANKS ───────────────────────────────── */
+
+  Google Fonts (Space Grotesk, Space Mono)
+  Font Awesome (icons)
+  GitHub Pages (hosting)
+  Every open-source contributor whose libraries
+  made this possible.
+
+
+/* ── SITE ─────────────────────────────────── */
+
+  Last update:    2026
+  Language:       English / Italian
+  Doctype:        HTML5
+  IDE:            Whatever felt right that day
+  Standards:      HTML5, CSS3, Vanilla JS (ES2020+)
+  Components:     Zero frameworks. All hand-rolled.
+  Deployment:     GitHub Pages
+  Domain:         crii.me
+
+
+/* ── PHILOSOPHY ───────────────────────────── */
+
+  Build it yourself.
+  Ship it raw.
+  Make it weird.
+  No rounded corners.
+
+
+/* ════════════════════════════════════════════ */

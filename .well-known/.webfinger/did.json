@@ -1,0 +1,30 @@
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:web:crii.me",
+  "verificationMethod": [
+    {
+      "id": "did:web:crii.me#owner",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:web:crii.me",
+      "publicKeyMultibase": "REPLACE_WITH_YOUR_PUBLIC_KEY"
+    }
+  ],
+  "authentication": [
+    "did:web:crii.me#owner"
+  ],
+  "assertionMethod": [
+    "did:web:crii.me#owner"
+  ],
+  "service": [
+    {
+      "id": "did:web:crii.me#website",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://crii.me"
+    },
+    {
+      "id": "did:web:crii.me#webfinger",
+      "type": "WebFinger",
+      "serviceEndpoint": "https://crii.me/.well-known/webfinger"
+    }
+  ]
+}

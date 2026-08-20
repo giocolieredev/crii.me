@@ -1,0 +1,10 @@
+Contact: mailto:hello@crii.me
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en, it
+Canonical: https://crii.me/.well-known/security.txt
+Policy: https://crii.me/.well-known/security.txt
+
+# crii.me — Security Policy
+# If you find a vulnerability, please report it to hello@crii.me
+# This is a static GitHub Pages site with no backend, so
+# scope is limited to the frontend and deployment pipeline.
