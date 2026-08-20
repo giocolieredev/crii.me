@@ -1,26 +1,27 @@
 # Status Page — status.crii.me
 
-System status page for the crii.me ecosystem.
+System status page for the crii.me ecosystem.  
+**Fully automatic** — a GitHub Action checks every service every 10 minutes
+and updates `status.json` by itself. Free (public repo Actions minutes).
 
-## 📝 Update Status
+## How it works
 
-Edit `status/status.json` and push.
+1. `.github/workflows/monitor.yml` runs `monitor.py` every 10 minutes.
+2. `monitor.py` does an HTTPS HEAD request to each service URL:
+   - `2xx/3xx` → operational
+   - `4xx` → degraded
+   - `5xx` / timeout / connection error → outage
+3. Results are written to `status.json` (status + 24h uptime history)
+   and auto-committed by the Action.
 
-### Change Service Status
+No manual editing needed. The status page reflects what's actually live.
 
-```json
-{
-  "name": "Website",
-  "slug": "website",
-  "status": "degraded"
-}
-```
+## Manual additions (still supported)
 
-Valid statuses: `operational`, `degraded`, `outage`, `maintenance`
+You can still edit `status.json` to add **incidents** (the Action won't
+remove them) or to override a status temporarily.
 
-### Report an Incident
-
-Add to `incidents` array:
+### Add an incident
 
 ```json
 {
@@ -43,34 +44,24 @@ Add to `incidents` array:
 
 Incident statuses: `investigating`, `identified`, `monitoring`, `resolved`, `postmortem`
 
-### Update Uptime Bars
+## Run a check manually
 
-The `uptime` object has 24-element arrays (one per hour):
-- `1` = operational
-- `0` = down
-- `0.5` = degraded
-- `2` = maintenance
+- GitHub: **Actions** tab → *Monitor services* → **Run workflow**
+- Locally: `python3 monitor.py` (or `py monitor.py` on Windows)
 
-Example: `[1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]` = 2h downtime
+## Configuration
 
-## 🚀 Quick Update
+Services to monitor are the entries with a `url` in `status.json`
+(the `API` service without a URL is skipped — used for "coming soon").
 
-```bash
-cd status
-vim status.json
-git add status.json
-git commit -m "Update: website degraded"
-git push
+## Page refresh
+
+The page reloads `status.json` every 5 minutes.
+
+## DNS
+
 ```
-
-## 🔄 Auto-Refresh
-
-The page auto-refreshes every 5 minutes. No rebuild needed.
-
-## 📊 Features
-
-- Live status banner (color-coded)
-- Service cards with individual status
-- Uptime bars with hour-by-hour tooltips
-- Incident history timeline
-- Dark theme matching crii.me
+Type:  CNAME
+Name:  status
+Value: giocolieredev.github.io
+```

@@ -277,16 +277,21 @@ Value: giocolieredev.github.io
 ## 9. The Status Page (status.crii.me)
 
 The status page (`status/` folder) shows live system status for all services.
-It loads `status.json` from GitHub — edit that file to update the page.
 
-**Update a service status:**
+**It's fully automatic** — a GitHub Action checks every service every 10
+minutes over HTTPS and updates `status.json` itself (free, public repo).
+Nothing to do on your end: add a service to `status.json` (with a `url`)
+and it gets monitored.
+
+**Add an incident manually** (the Action won't remove these):
 
 ```bash
-# Edit status.json — change a service's status
 cd status
-vim status.json  # change "status": "operational" to "degraded"
-git add status.json && git commit -m "Update: website degraded" && git push
+vim status.json  # add to the "incidents" array
+git add status.json && git commit -m "Add incident" && git push
 ```
+
+**Run a check on demand:** Actions tab → *Monitor services* → **Run workflow**.
 
 **Report an incident:**
 
