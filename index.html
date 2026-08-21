@@ -1488,7 +1488,17 @@
       display: block;
     }
 
-    @media (max-width: 767px) {
+    /* Tabs stay visible as long as they fit; the burger takes over when the
+       nav overflows (JS adds html.nav-collapsed) or at ≤640px as a no-JS
+       fallback. */
+    html.nav-collapsed .nav-tabs {
+      display: none;
+    }
+    html.nav-collapsed .burger-btn {
+      display: flex;
+      margin-left: auto;
+    }
+    @media (max-width: 640px) {
       .nav-tabs {
         display: none;
       }
@@ -1799,6 +1809,36 @@
       <i class="fa-solid fa-bars"></i>
     </button>
   </nav>
+
+  <!-- Mobile side drawer menu -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-overlay" onclick="toggleDrawer()"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <span class="drawer-title">MENU</span>
+        <button class="drawer-close" onclick="toggleDrawer()" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="drawer-links">
+        <a href="index.html#home" class="drawer-tab active" id="drawer-tab-home" data-i18n-key="nav_home">HOME</a>
+        <a href="about.html" class="drawer-tab" id="drawer-tab-about" data-i18n-key="nav_about">ABOUT</a>
+        <a href="index.html#projects" class="drawer-tab" id="drawer-tab-projects" data-i18n-key="nav_projects">PROJECTS</a>
+        <a href="https://blog.crii.me/" class="drawer-tab" id="drawer-tab-blog" data-i18n-key="nav_blog">BLOG</a>
+        <a href="index.html#music" class="drawer-tab" id="drawer-tab-music" data-i18n-key="nav_music">MUSIC <span class="wip-badge">WIP</span></a>
+        <a href="index.html#art" class="drawer-tab" id="drawer-tab-art" data-i18n-key="nav_art">ART <span class="wip-badge">WIP</span></a>
+        <a href="index.html#games" class="drawer-tab" id="drawer-tab-games" data-i18n-key="nav_games">GAMES <span class="wip-badge">WIP</span></a>
+        <a href="discord.html" class="drawer-tab" id="drawer-tab-discord" data-i18n-key="nav_discord">DISCORD</a>
+      </div>
+      <div class="drawer-footer">
+        <span class="drawer-footer-label" data-i18n-key="footer_lang_label">LANGUAGE</span>
+        <select id="drawer-lang-select" aria-label="Select language" onchange="setLang(this.value); toggleDrawer()">
+          <option value="en">🇬🇧 English</option>
+          <option value="it">🇮🇹 Italiano</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════
      SPOTIFY SIDE PANEL
@@ -2764,6 +2804,26 @@
       initCookie();
       handleHashRoute();
     });
+  </script>
+
+  <script>
+    /* Responsive nav: collapse into the burger exactly when the tabs no longer fit */
+    (function () {
+      function updateNavCollapse() {
+        var nav = document.querySelector('.site-nav');
+        var tabs = document.querySelector('.nav-tabs');
+        if (!nav || !tabs) return;
+        /* Measure with the tabs shown, then collapse if they overflow */
+        document.documentElement.classList.remove('nav-collapsed');
+        var overflow = nav.scrollWidth > nav.clientWidth + 1;
+        document.documentElement.classList.toggle('nav-collapsed', overflow);
+      }
+      window.addEventListener('resize', updateNavCollapse);
+      window.addEventListener('orientationchange', updateNavCollapse);
+      window.addEventListener('load', updateNavCollapse);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateNavCollapse);
+      updateNavCollapse();
+    })();
   </script>
 
   <!-- ═══════════════════════════════════════════

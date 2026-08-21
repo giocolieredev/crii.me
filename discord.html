@@ -709,7 +709,17 @@
       outline: 2px solid var(--orange);
     }
 
-    @media (max-width: 767px) {
+    /* Tabs stay visible as long as they fit; the burger takes over when the
+       nav overflows (JS adds html.nav-collapsed) or at ≤640px as a no-JS
+       fallback. */
+    html.nav-collapsed .nav-tabs {
+      display: none;
+    }
+    html.nav-collapsed .burger-btn {
+      display: flex;
+      margin-left: auto;
+    }
+    @media (max-width: 640px) {
       .nav-tabs {
         display: none;
       }
@@ -1474,6 +1484,26 @@
       initCopyright();
       initCookie();
     });
+  </script>
+
+  <script>
+    /* Responsive nav: collapse into the burger exactly when the tabs no longer fit */
+    (function () {
+      function updateNavCollapse() {
+        var nav = document.querySelector('.site-nav');
+        var tabs = document.querySelector('.nav-tabs');
+        if (!nav || !tabs) return;
+        /* Measure with the tabs shown, then collapse if they overflow */
+        document.documentElement.classList.remove('nav-collapsed');
+        var overflow = nav.scrollWidth > nav.clientWidth + 1;
+        document.documentElement.classList.toggle('nav-collapsed', overflow);
+      }
+      window.addEventListener('resize', updateNavCollapse);
+      window.addEventListener('orientationchange', updateNavCollapse);
+      window.addEventListener('load', updateNavCollapse);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateNavCollapse);
+      updateNavCollapse();
+    })();
   </script>
 
   <!-- ═══════════════════════════════════════════
