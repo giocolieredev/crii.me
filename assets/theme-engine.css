@@ -83,10 +83,14 @@
     html[data-theme-accent] .drawer-tab.active .wip-badge { color: var(--theme-accent); }
     html[data-theme-accent] .nav-tab.active,
     html[data-theme-accent] .drawer-tab.active,
-    html[data-theme-accent] .nav-logo:hover,
     html[data-theme-accent] .burger-btn:hover,
     html[data-theme-accent] .wip-badge,
     html[data-theme-accent] .err-home:hover { background: var(--theme-accent); }
+    /* All nav tabs (buttons and links alike) get accent-colored hover text,
+       matching the grey -> accent color change instead of a filled block. */
+    html[data-theme-accent] .nav-tab:hover,
+    html[data-theme-accent] .drawer-tab:hover,
+    html[data-theme-accent] .nav-logo:hover { color: var(--theme-accent); }
     html[data-theme-accent] .link-btn.accent {
       background: var(--theme-accent);
       color: var(--black);
