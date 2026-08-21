@@ -1,17 +1,29 @@
 #!/usr/bin/env node
 /* ════════════════════════════════════════════
-   sitemap.js — auto-generates sitemap.xml for crii.me
-   Scans top-level *.html pages in this repo and writes sitemap.xml
-   with per-page lastmod from git history. Run manually or via the
-   "Update sitemap" GitHub Action (mirrors the status monitor).
+   sitemap.js — auto-generates sitemap.xml for a crii.me site
+   The domain comes from the CNAME file, so this same script works in
+   every crii.me repo (main site, status, link, bio, cdn, help, …).
+   It scans top-level *.html pages and writes sitemap.xml with per-page
+   lastmod from git history. Run manually or via the "Update sitemap"
+   GitHub Action (mirrors the status monitor).
    ════════════════════════════════════════════ */
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const BASE = 'https://crii.me';
 const EXCLUDE = new Set(['404.html']); // error page — not a real URL to index
+
+function readDomain() {
+  try {
+    const cname = fs.readFileSync(path.join(ROOT, 'CNAME'), 'utf8')
+      .split(/\r?\n/)[0].trim();
+    if (cname) return cname;
+  } catch (e) { /* no CNAME file */ }
+  return 'crii.me';
+}
+
+const BASE = 'https://' + readDomain();
 
 function listPages() {
   return fs.readdirSync(ROOT)
@@ -55,5 +67,5 @@ const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '\n</urlset>\n';
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
-console.log(`sitemap.xml written with ${urls.length} URL(s):`);
+console.log(`sitemap.xml written with ${urls.length} URL(s) for ${BASE}:`);
 urls.forEach((u) => console.log(`  - ${u.loc} (${u.lastmod})`));
