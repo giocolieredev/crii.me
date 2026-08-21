@@ -309,6 +309,22 @@ Value: giocolieredev.github.io
 
 ---
 
+## 9b. The sitemap (automatic)
+
+`sitemap.xml` at the site root is generated automatically — no manual
+maintenance. A GitHub Action (*Update sitemap*) scans the site's HTML pages
+and regenerates it on every push (and daily as a safety net), committing
+only when the page list or dates change. `robots.txt` already points search
+engines at `https://crii.me/sitemap.xml`.
+
+To regenerate it locally before pushing:
+
+```bash
+node sitemap.js
+```
+
+---
+
 ## 10. URL Shortener (link.crii.me)
 
 The link shortener (`link/` folder) provides short URLs at `link.crii.me/#<code>`.
