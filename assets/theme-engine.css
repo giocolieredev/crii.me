@@ -72,19 +72,36 @@
       background-size: var(--theme-grid-size, 32px) var(--theme-grid-size, 32px);
     }
 
-    /* ── Apply theme tokens across the site ── */
-    html[data-theme-accent] {
-      --orange: var(--theme-accent);
-      --orange-d: var(--theme-accent-d);
-      --orange-l: var(--theme-accent-l);
+    /* ── Apply theme accent (decorative only) ──
+       The accent colors the active tab, WIP badges, orange text and
+       link hover text. Buttons (project-link, contact, cookie, link-btn)
+       keep their base orange + black text so they stay readable with
+       any accent, including dark ones. */
+    html[data-theme-accent] .orange,
+    html[data-theme-accent] a:hover,
+    html[data-theme-accent] .nav-tab.active .wip-badge,
+    html[data-theme-accent] .drawer-tab.active .wip-badge { color: var(--theme-accent); }
+    html[data-theme-accent] .nav-tab.active,
+    html[data-theme-accent] .drawer-tab.active,
+    html[data-theme-accent] .nav-logo:hover,
+    html[data-theme-accent] .burger-btn:hover,
+    html[data-theme-accent] .wip-badge,
+    html[data-theme-accent] .err-home:hover { background: var(--theme-accent); }
+    html[data-theme-accent] .link-btn.accent {
+      background: var(--theme-accent);
+      color: var(--black);
+      border-color: var(--theme-accent);
     }
-    html[data-theme-accent] .orange { color: var(--theme-accent); }
-    html[data-theme-accent] a:hover { color: var(--theme-accent); }
-    /* NOTE: .nav-tab.active and .section-title keep their base colors
-       (black on accent background / black on light) — forcing the accent
-       there makes text invisible on dark accents. */
-    html[data-theme-accent] .btn-primary { background: var(--theme-accent); }
-    html[data-theme-accent] .btn-primary:hover { background: var(--theme-accent-l); }
+    html[data-theme-accent] .link-btn.accent:hover {
+      background: var(--black);
+      color: var(--theme-accent-l);
+      border-color: var(--black);
+    }
+    /* Link hover text on dark backgrounds uses the light accent variant */
+    html[data-theme-accent] .link-btn:hover,
+    html[data-theme-accent] .cookie-btn.accept:hover {
+      color: var(--theme-accent-l);
+    }
 
     /* ── Radius / shadow application ── */
     html[data-theme-mode] *,
