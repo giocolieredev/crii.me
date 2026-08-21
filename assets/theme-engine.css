@@ -79,9 +79,10 @@
       --orange-l: var(--theme-accent-l);
     }
     html[data-theme-accent] .orange { color: var(--theme-accent); }
-    html[data-theme-accent] a:hover,
-    html[data-theme-accent] .nav-tab.active,
-    html[data-theme-accent] .section-title { color: var(--theme-accent); }
+    html[data-theme-accent] a:hover { color: var(--theme-accent); }
+    /* NOTE: .nav-tab.active and .section-title keep their base colors
+       (black on accent background / black on light) — forcing the accent
+       there makes text invisible on dark accents. */
     html[data-theme-accent] .btn-primary { background: var(--theme-accent); }
     html[data-theme-accent] .btn-primary:hover { background: var(--theme-accent-l); }
 
