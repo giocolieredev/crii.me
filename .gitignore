@@ -14,3 +14,8 @@ _posts/
 Gemfile
 Gemfile.lock
 vendor/
+
+# Local-only service docs (not pushed)
+ART.md
+BIO.md
+LINK.md
